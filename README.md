@@ -85,3 +85,17 @@ I **once thought about** but don't know how to realize.
 **implementing** them **are interesting** per se.
 
 ---
+
+### User Story
+
+As a user, I want to be able to
+- _create/remove an `item`_
+- _add an `item` to a `place`_
+- _add a `place` to another `place`_
+- _add a `place` to a `listOfPlaces`_
+- _find an `item` by its name_
+- _find an `item` by fuzzy search_
+- _get all `item` in a `place`/`listOfPlaces`_
+- _get a timeline for all `item`_
+
+---
