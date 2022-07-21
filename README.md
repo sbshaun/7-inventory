@@ -7,7 +7,7 @@
 `7-Inventory` allows users to 
 
 1. `create` 
-   1. an `item` and **related information** such as
+   1. `Item` and **related information** such as
 
       - `addedDate` &nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -24,45 +24,52 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       // related to the item for easy lookup
-   
-   2. a `place` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+   2. `Place` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp; 
    // to keep items
 
-   3. a `listOfPlaces` &nbsp;&nbsp;&nbsp; 
-   // self-evident
+   3. `ListOfObjects` &nbsp; 
+   // can keep items or places    
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   // meaning can be `listOfItems` or `listOfPlaces`
 
-2. `add`
+4. `add`
    
-   1. `item` &nbsp; to a `place`
+   1. an `item` &nbsp; to a `place`
    
-   2. `place` to a `listOfPlaces`
+   2. a `place` to a `listOfPlaces`
 
-3. `remove`
-   1. `item` &nbsp;&nbsp;from a `place`
-   2. `place` from a `listOfPlaces`
+5. `remove`
+   1. an `item` &nbsp;&nbsp;from a `place`
+   2. a `place` from a `listOfPlaces`
 
-4. `find`
+6. `find`
     1. the `place` &nbsp;&nbsp;&nbsp;&nbsp;
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
    // where an `item` &nbsp;is kept
-    2. the `listOfPlace` 
-   // where a &nbsp;&nbsp;`place` is kept 
+    2. the `place` &nbsp;&nbsp;&nbsp;
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       // where a &nbsp;&nbsp;`place` is located 
 
-5. `tryFind`
+7. `tryFind`
    1. try to find an `item`/`place`by comparing it 
    to its **related information**, and return the `place` 
    or a path to the `item`
    \- (if item is kept in a place, 
    and the place is kept in another place...)
 
-6. `getAll`
+8. `getAll`
    1. `item` &nbsp;&nbsp;&nbsp;
    in a `place`
    2. `place` &nbsp;&nbsp;in a `listOfPlaces`
 
-7. `getTimeline`
+9. `getTimeline`
    1. return a timeline (important dates) of all items
       - e.g. expiry dates of food in the fridge
 
@@ -92,10 +99,9 @@ As a user, I want to be able to
 - _create/remove an `item`_
 - _add an `item` to a `place`_
 - _add a `place` to another `place`_
-- _add a `place` to a `listOfPlaces`_
 - _find an `item` by its name_
 - _find an `item` by fuzzy search_
-- _get all `item` in a `place`/`listOfPlaces`_
-- _get a timeline for all `item`_
+- _get all `item` in a `place`_
+- _get a timeline for all `item` in all `place`_
 
 ---
