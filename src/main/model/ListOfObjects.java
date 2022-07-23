@@ -3,8 +3,10 @@ package model;
 import java.util.ArrayList;
 
 // A list of Places
-public class ListOfObjects {
-    private ArrayList<? extends Item> listOfObjects;
+public class ListOfObjects extends ArrayList<Item> {
+    private ArrayList<Item> listOfObjects;
+
+
 
     // Constructor below ================
     public ListOfObjects() {
@@ -13,17 +15,16 @@ public class ListOfObjects {
     // Constructor above ================
 
 
-
     // Methods below ========================
 
     // EFFECTS: return all places and items in all places
     public String getAll() {
-        return null; // stub
+        return ""; // stub
     }
 
     // EFFECTS: return all dates for importantDate of all items in all places
     public String getTimeLine() {
-        return null;// stub
+        return "";// stub
     }
 
 
@@ -31,11 +32,11 @@ public class ListOfObjects {
 
 
     // Getters and setters below ===================
-    public ArrayList<? extends Item> getListOfObjects() {
+    public ArrayList<Item> getListOfObjects() {
         return listOfObjects;
     }
 
-    public void setListOfObjects(ArrayList<? extends Item> listOfObjects) {
+    public void setListOfObjects(ArrayList<Item> listOfObjects) {
         this.listOfObjects = listOfObjects;
     }
 }

@@ -10,21 +10,6 @@ public class Place extends Item {
 
 
     // Constructors below ========================
-    public Place(String name) {
-        super(name);
-        keptItems = new ListOfObjects();
-    }
-
-    public Place(String name, String importantDate) {
-        super(name, importantDate);
-        keptItems = new ListOfObjects();
-    }
-
-    public Place(String name, String importantDate, int degreeOfImportance) {
-        super(name, importantDate, degreeOfImportance);
-        keptItems = new ListOfObjects();
-    }
-
     public Place(String name, String importantDate, int degreeOfImportance,
                  ArrayList<String> keywords) {
         super(name, importantDate, degreeOfImportance, keywords);
@@ -48,18 +33,20 @@ public class Place extends Item {
         // stub
     }
 
-    // EFFECTS: return index if the item is in keptItems
-    public int find(Item item) {
+    // EFFECTS: return index if the item is in keptItems, -1 if not found
+    //          return 999 if found multiple of the same name
+    public int find(String name) {
         return 0; // stub
     }
 
     // EFFECT: return index of the item if any keyword is match by an item , -1 if not found
-    public int tryFind(String keywords) {
+    //          return 999 if found multiple items are matched
+    public int tryFind(String keyword) {
         return 0; // stub
     }
 
     // EFFECTS: return true if an item matches any of the keywords
-    private boolean maybe(Item item, ArrayList<String> keywords) {
+    private boolean maybe(String name, ArrayList<String> keywords) {
         return false; // stub
     }
 
