@@ -82,6 +82,30 @@
    1. return a timeline (important dates) of all `item` kept
       - e.g. expiry dates of food in the fridge
 
+| filed             | type                     |
+|-------------------| ------------------------ |
+| name              | String                   |
+| createdDate       | LocalDate                |
+| importantDate     | LocalDate                |
+| degreeOfImportance| int                      |
+| keywords          | ArrayList\<String>       |
+|                   |                          |
+| keptItems         | ListOfObject             |
+|                   |                          |
+| listOfPlaces      | extends ArrayList\<Item> |
+
+
+| class        | method and description | return type |
+| ------------ | ---------------------- | ----------- |
+| Place        | add(Item item)         | void        |
+| Place        | remove(Item item)      | void        |
+| Place        | find(String name)      | int         |
+| Place        | find(LocalDate date)   | int         |
+| Place        | getAll()               | String      |
+| Place        | getTimeline()          | String      |
+| ListOfObject | getEverything()        | String      |
+| ListOfObject | getEveryTimeline()     | String      |
+
 ---
 
 ### Who will use it?
