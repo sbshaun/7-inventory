@@ -82,6 +82,8 @@
    1. return a timeline (important dates) of all `item` kept
       - e.g. expiry dates of food in the fridge
 
+---
+
 | filed             | type                     |
 |-------------------| ------------------------ |
 | name              | String                   |
@@ -94,6 +96,7 @@
 |                   |                          |
 | listOfPlaces      | extends ArrayList\<Item> |
 
+---
 
 | class        | method and description | return type |
 | ------------ | ---------------------- | ----------- |
