@@ -1,8 +1,8 @@
 package ui;
 
 import model.Item;
-import model.ListOfObjects;
 import model.Place;
+import model.ListOfObjects;
 
 // SevenInventory application
 public class SevenInventory {

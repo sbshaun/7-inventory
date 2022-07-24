@@ -14,9 +14,9 @@
 
       - `importantDate` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
-      // such as expiry/effective date
+      // such as expiry/effective date...
 
-      - `degreeOfImportance` // importance level of an item.
+      - `degreeOfImportance` // importance level of an item
      
       - `keyWords` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -56,7 +56,7 @@
    2. a `place`
 
 5. `find`
-    1. an `item` based on **name** or **createdDate**   
+    1. an `item` based on `name` or `createdDate`   
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    // return the `place` where it is kept if found
