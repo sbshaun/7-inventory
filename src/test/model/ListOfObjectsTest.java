@@ -25,11 +25,11 @@ class ListOfObjectsTest {
                 7, keywords);
         Place place2 = new Place("2 place", "2022-11-11",
                 5, keywords);
-        Place place3 = new Place("3 place", "2022-15-17",
+        Place place3 = new Place("3 place", "2022-11-17",
                 11, keywords);
 
         Item item1 = new Item("Concert ticket", "2022-09-19", 7, keywords);
-        Item item2 = new Item("Concert ticket", "", 5, keywords);
+        Item item2 = new Item("Concert ticket", "2022-07-27", 5, keywords);
         Item item3 = new Item("Old ipad", "2022-09-27", 3, keywords);
 
         listOfObjects.add(place1);
@@ -41,7 +41,7 @@ class ListOfObjectsTest {
     }
 
     @Test
-    public void testConstructor1() {
+    public void testConstructor() {
         ListOfObjects listOfObjects = new ListOfObjects();
 
         ArrayList<Item> lobj = new ArrayList<>();
@@ -50,22 +50,30 @@ class ListOfObjectsTest {
     }
 
     @Test
-    void getAllTest() {
-        String expectedResult = "All objects here: A place, 2 place, " +
-                "3 place, Concert ticket, Concert ticket, Old ipad";
+    void getEverythingTest() {
 
-        String result = listOfObjects.getAll();
+        String expectedResult = "A place\n2 place\n3 place\nConcert ticket\nConcert ticket\nOld ipad\n";
 
-        assertEquals(expectedResult, result);
+        String result1 = listOfObjects.getEverything();
+
+        listOfObjects = new ListOfObjects();
+        String result2  = listOfObjects.getEverything();
+
+        assertEquals(expectedResult, result1);
+        assertEquals("", result2);
     }
 
     @Test
-    void getTimeLineTest() {
-        String expectedResult = "Important dates: A place 2022-07-17, Concert ticket 2022-09-19, " +
-                "Old ipad 2022-09-27, 2 place 2022-11-11, 3 place 2022-11-17.";
+    void getEveryTimelineTest() {
+        String expectedResult = "A place 2022-07-17\nConcert ticket 2022-07-27\nConcert ticket 2022-09-19\n" +
+                "Old ipad 2022-09-27\n2 place 2022-11-11\n3 place 2022-11-17\n";
 
-        String result = listOfObjects.getTimeLine();
+        String result1 = listOfObjects.getEveryTimeline();
 
-        assertEquals(expectedResult, result);
+        listOfObjects = new ListOfObjects();
+        String result2  = listOfObjects.getEveryTimeline();
+
+        assertEquals(expectedResult, result1);
+        assertEquals("", result2);
     }
 }

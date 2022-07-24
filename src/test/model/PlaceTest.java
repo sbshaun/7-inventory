@@ -3,6 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -32,14 +33,13 @@ class PlaceTest {
                 5, keywords);
 
         item1 = new Item("Concert ticket", "2022-09-19", 7, keywords);
-        item2 = new Item("Concert ticket","", 5, keywords);
+        item2 = new Item("Concert ticket2","2023-11-11", 5, keywords);
         item3 = new Item("Old ipad", "2022-09-27", 3, keywords);
     }
 
 
-
     @Test
-    public void testConstructor4() {
+    public void testConstructor() {
         ArrayList<String> keywords = new ArrayList<>();
         keywords.add("yes");
         keywords.add("abc");
@@ -119,60 +119,91 @@ class PlaceTest {
 
         int result1= place1.find("2 place");
         int result2 = place1.find("abc");
-        int result3 = place1.find("Concert ticket");
+        int result3 = place1.find("Concert ticket2");
 
         assertEquals(0, result1);
         assertEquals(-1, result2);
-        assertEquals(999, result3);
+        assertEquals(2, result3);
     }
-
-
 
     @Test
-    void tryFindTest() {
-        place1.add(place2);
-        place1.add(item1);
-        place1.add(item2);
-        place1.add(item3);
+    void findDateTest() {
+        Place place5 = new Place("5 place", "2022-07-09",
+                5, new ArrayList<>());
+        LocalDate createdDate = place2.getCreatedDate();
+        place1.add(place5);
 
-        int result1= place1.find("place");
-        int result2 = place1.find("abc");
-        int result3 = place1.find("Concert tic");
+        int result1 = place1.find(createdDate);
+
+        int result2 = place1.find(LocalDate.parse("2022-01-01"));
 
         assertEquals(0, result1);
         assertEquals(-1, result2);
-        assertEquals(999, result3);
     }
+
+
+
+//    @Test
+//    void tryFindTest() {
+//        place1.add(place2);
+//        place1.add(item1);
+//        place1.add(item2);
+//        place1.add(item3);
+//
+//        int result1= place1.tryFind("A place");
+//        int result2 = place1.tryFind("abc");
+//        int result3 = place1.tryFind("Concert tic");
+//
+//        assertEquals(0, result1);
+//        assertEquals(-1, result2);
+//        assertEquals(1, result3);
+//    }
 
 
 
     @Test
     void getAllTest() {
+        Item item4 = new Item("abcde", "2022-07-07",
+                1, new ArrayList<>());
+        Place place3 = new Place("3 place", "2022-11-07",
+                3, new ArrayList<>());
+
+        String result1 = place1.getAll();
+
         place1.add(place2);
         place1.add(item1);
         place1.add(item2);
-        place1.add(item3);
+        place2.add(item3);
+        place2.add(place3);
+        place3.add(item4);
 
-        String result = place1.getAll();
+        String result2 = place1.getAll();
 
-        String expectedResult = "All items kept in \"A place\": 2 place, " +
-                "Concert ticket, Concert ticket, Old ipad.";
-        assertEquals(expectedResult, result);
+        String expectedResult = "2 place\nOld ipad\n3 place\nabcde\nConcert ticket\nConcert ticket2\n";
+        assertEquals("", result1);
+        assertEquals(expectedResult, result2);
     }
 
 
 
     @Test
     void getTimelineTest() {
+        String result1 = place1.getTimeline();
+
         place1.add(place2);
+        String result2 = place1.getTimeline();
+
         place1.add(item1);
         place1.add(item2);
         place1.add(item3);
+        String result3 = place1.getTimeline();
 
-        String result = place1.getTimeline();
-
-        String expectedResult = "Important dates: Concert ticket 2022-09-19, " +
-                "Old ipad 2022-09-27, 2 place 2022-11-11.";
-        assertEquals(expectedResult, result);
+        String expectedResult = "Concert ticket 2022-09-19\n" +
+                                "Old ipad 2022-09-27\n" +
+                                "2 place 2022-11-11\n" +
+                                "Concert ticket2 2023-11-11\n";
+        assertEquals("", result1);
+        assertEquals("\"A place\" 2022-11-11\n", result2);
+        assertEquals(expectedResult, result3);
     }
 }

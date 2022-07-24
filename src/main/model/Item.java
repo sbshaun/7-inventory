@@ -7,7 +7,7 @@ import java.util.ArrayList;
 // An item with necessary information
 public class Item {
     private final String name;
-    private final String addedDate;
+    private final LocalDate createdDate;
     private final LocalDate importantDate; //if time sensitive. e.g. effective date, expiry date...
     private final int degreeOfImportance; // if important, how important it is
     private final ArrayList<String> keywords; // related to the item for easy lookup
@@ -16,7 +16,7 @@ public class Item {
     public Item(String name, String importantDate, int degreeOfImportance,
                 ArrayList<String> keywords) {
         this.name = name;
-        this.addedDate = LocalDate.now().toString(); // date when an item is added, in the format of yyyy-MM-dd
+        this.createdDate = LocalDate.now(); // date when an item is added, in the format of yyyy-MM-dd
         this.importantDate = LocalDate.parse(importantDate); // in the format of yyyy-MM-dd
         this.degreeOfImportance = degreeOfImportance;
         this.keywords = keywords;
@@ -42,7 +42,7 @@ public class Item {
         return keywords;
     }
 
-    public String getAddedDate() {
-        return addedDate;
+    public LocalDate getCreatedDate() {
+        return createdDate;
     }
 }

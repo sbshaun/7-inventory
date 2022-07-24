@@ -1,8 +1,8 @@
 package model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,10 +21,11 @@ class ItemTest {
         String name = item.getName();
         String impDate= item.getImportantDate();
         int degOfImp = item.getDegreeOfImportance();
-        // String addedDate = item.getAddedDate(); // How to test added date?
+        LocalDate addedDate = item.getCreatedDate(); // How to test added date?
         ArrayList<String> itemKeywords = item.getKeywords();
 
         assertEquals("FFF", name);
+        assertEquals(LocalDate.now(), addedDate);
         assertEquals("2023-03-17", impDate);
         assertEquals(5, degOfImp);
         assertEquals(keywords, itemKeywords);
