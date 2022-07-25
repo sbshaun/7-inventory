@@ -30,8 +30,7 @@ public class ListOfObjects extends ArrayList<Item> {
         return everything.toString(); // stub
     }
 
-    // EFFECTS: return all dates for importantDate of all items in all places
-    // EFFECTS: return all dates for importantDate of all items in the place
+    // EFFECTS: return all dates for importantDate of all items in this
     public String getEveryTimeline() {
         ListOfObjects copy;
 
@@ -56,6 +55,7 @@ public class ListOfObjects extends ArrayList<Item> {
         return timeline.toString();
     }
 
+    // EFFECTS: get all kept items in this
     private ListOfObjects addAllItems(ListOfObjects loob) {
         ListOfObjects listOfObjects = new ListOfObjects();
         for (Item item: loob) {

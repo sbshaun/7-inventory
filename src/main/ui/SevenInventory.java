@@ -122,6 +122,8 @@ public class SevenInventory {
 //        }
     }
 
+    // MODIFIES: this
+    // EFFECTS: reset fields to go  back to Top Level
     private void backToTopLevel() {
         pathOfPlaces.clear();
         previousPlace = null;
@@ -131,6 +133,7 @@ public class SevenInventory {
     }
 
     // MODIFIES: this
+    // EFFECTS: access a place or item
     private void access() {
         System.out.println("Enter name of the place/item you want to access: ");
         listItems();
@@ -283,11 +286,11 @@ public class SevenInventory {
 //    }
 
 
-
-    private void getTimeline() {
-        System.out.println("Important dates timeline in all places: ");
-        System.out.println(listOfObjects.getEveryTimeline());
-    }
+//    TODO: timeline
+//    private void getTimeline() {
+//        System.out.println("Important dates timeline in all places: ");
+//        System.out.println(listOfObjects.getEveryTimeline());
+//    }
 
     // TODO: find method, if time permits
 //    private void findItem() {
