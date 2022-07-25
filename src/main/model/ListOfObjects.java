@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 
 // A list of Places
@@ -34,19 +33,14 @@ public class ListOfObjects extends ArrayList<Item> {
     // EFFECTS: return all dates for importantDate of all items in all places
     // EFFECTS: return all dates for importantDate of all items in the place
     public String getEveryTimeline() {
-        ListOfObjects copy = new ListOfObjects();
-        copy.addAll(this);
+        ListOfObjects copy;
 
-        if (copy.isEmpty()) {
+        if (this.isEmpty()) {
             return "";
         }
 
         // add  items in places into copy
-        for (Item i: this) {
-            if (i.getClass().equals(Place.class)) {
-                copy.addAll(((Place) i).getKeptItems());
-            }
-        }
+        copy = addAllItems(this);
 
         Comparator<Item> comparator = Comparator.comparing(Item::getImportantDate); // Custom comparator
         copy.sort(comparator); // Sort in natural order by customized comparator
@@ -62,5 +56,17 @@ public class ListOfObjects extends ArrayList<Item> {
         return timeline.toString();
     }
 
+    private ListOfObjects addAllItems(ListOfObjects loob) {
+        ListOfObjects listOfObjects = new ListOfObjects();
+        for (Item item: loob) {
+            if ((item.getClass().equals(Place.class))) {
+                listOfObjects.add(item);
+                addAllItems(((Place) item).getKeptItems());
+            } else {
+                listOfObjects.add(item);
+            }
+        }
+        return listOfObjects;
+    }
     // Methods above ========================
 }

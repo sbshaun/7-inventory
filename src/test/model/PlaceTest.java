@@ -179,6 +179,7 @@ class PlaceTest {
 
         String result2 = place1.getAll();
 
+        // TODO: if time permits: add index numbers
         String expectedResult = "2 place\nOld ipad\n3 place\nabcde\nConcert ticket\nConcert ticket2\n";
         assertEquals("", result1);
         assertEquals(expectedResult, result2);

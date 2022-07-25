@@ -7,10 +7,7 @@
 `7-Inventory` allows users to 
 
 1. `create` 
-   1. `Item` and **related information** such as
-      - `name`
-      
-      - `createdDate` 
+   1. `Item` with a `name`, `createdDate` and optional information:
 
       - `importantDate` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
@@ -45,21 +42,25 @@
 
 2. `add`
    
-   1. an `item`  to a `place`
+   1. an `item`  to the current `place`
    
-   2. a `place` to a `place`
+   2. a `place` to the current `place`
    
 [//]: # (   3. a `place` to a `listOfPlaces`)
 
 4. `remove`
-   1. an `item` from a `place`
-   2. a `place`
+   1. an `item` from the current `place`
+   2. a `place` from the current `place`
 
-5. `find`
-    1. an `item` based on `name` or `createdDate`   
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   // return the `place` where it is kept if found
+[//]: # (5. `find`)
+
+[//]: # (    1. an `item` based on `name` or `createdDate`   )
+
+[//]: # (   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+
+[//]: # (   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)
+
+[//]: # (   // return the `place` where it is kept if found)
 
 [//]: # (6. `tryFind`)
 
@@ -73,14 +74,20 @@
 
 [//]: # (   and the place is kept in another place...&#41;)
 
-7. `getAll`
-   1. `item` &nbsp;&nbsp;&nbsp;
-   in a `place`
-   2. `place` in the system and all `item` kept in these `place`
+[//]: # (7. `getAll`)
 
-8. `getTimeline`
-   1. return a timeline (important dates) of all `item` kept
-      - e.g. expiry dates of food in the fridge
+[//]: # (   1. `item` &nbsp;&nbsp;&nbsp;)
+
+[//]: # (   in a `place`)
+
+[//]: # (   2. `place` in the system and all `item` kept in these `place`)
+
+[//]: # ()
+[//]: # (8. `getTimeline`)
+
+[//]: # (   1. return a timeline &#40;important dates&#41; of all `item` kept)
+
+[//]: # (      - e.g. expiry dates of food in the fridge)
 
 ---
 
@@ -96,18 +103,29 @@
 |                   |                          |
 | listOfPlaces      | extends ArrayList\<Item> |
 
----
+[//]: # ()
+[//]: # (---)
 
-| class        | method and description | return type |
-| ------------ | ---------------------- | ----------- |
-| Place        | add(Item item)         | void        |
-| Place        | remove(Item item)      | void        |
-| Place        | find(String name)      | int         |
-| Place        | find(LocalDate date)   | int         |
-| Place        | getAll()               | String      |
-| Place        | getTimeline()          | String      |
-| ListOfObject | getEverything()        | String      |
-| ListOfObject | getEveryTimeline()     | String      |
+[//]: # ()
+[//]: # (| class        | method and description | return type |)
+
+[//]: # (| ------------ | ---------------------- | ----------- |)
+
+[//]: # (| Place        | add&#40;Item item&#41;         | void        |)
+
+[//]: # (| Place        | remove&#40;Item item&#41;      | void        |)
+
+[//]: # (| Place        | find&#40;String name&#41;      | int         |)
+
+[//]: # (| Place        | find&#40;LocalDate date&#41;   | int         |)
+
+[//]: # (| Place        | getAll&#40;&#41;               | String      |)
+
+[//]: # (| Place        | getTimeline&#40;&#41;          | String      |)
+
+[//]: # (| ListOfObject | getEverything&#40;&#41;        | String      |)
+
+[//]: # (| ListOfObject | getEveryTimeline&#40;&#41;     | String      |)
 
 ---
 
@@ -120,25 +138,27 @@ effort in **managing belongings**.
 
 ### Why is this project of interest to you?
 
-- Because it is FUNNN as it makes more sense 
-because funnn is more **fun** :)
-- And it is also something that 
-I **once thought about** but don't know how to realize.
-- **Learning** new concepts and 
-**implementing** them **are interesting** per se.
+- Because it's FUN :)
+- Is also something that 
+I once thought about but didn't know how to realize.
+- Learning and implementing new concepts are fun per se.
 
 ---
 
 ### User Story
 
 As a user, I want to be able to
-- _create/remove an `place`_
-- _add an `item` to a `place`_
-- _add a `place` to a `place`_
-- _find an `item` by its name_
-- _get all `item` in a `place`_
-- _get a timeline for all `item` in all `place`_
+- _create multiple `place` at Top Level_
+- _access a `place` at Top Level_
+- _create multiple `place`/`item` inside the current `place`_
+- _access a `place`/`item` inside a `place`_
+- _delete the current `place`/`item`_
+- _go back to previous `place`_
+- _go back to Top Level_
+- _see all `item` in a `place`_
 
+[//]: # (- _get a timeline for all `item` in all `place`_)
+[//]: # (- _find an `item` by its name_)
 [//]: # (- _find an `item` by fuzzy search_)
 
 ---
