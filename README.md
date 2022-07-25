@@ -6,8 +6,9 @@
 
 `7-Inventory` allows users to 
 
-1. `create` 
-   1. `Item` with a `name`, `createdDate` and optional information:
+1. **create** 
+   1. `Item` in the current `place`   
+   with a `name`, `createdDate` and optional information:
 
       - `importantDate` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;
@@ -20,7 +21,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       // related to the item for easy lookup
 
-   2. `Place` &nbsp;&nbsp;&nbsp;
+   3. `Place` &nbsp;&nbsp;&nbsp;
    // can keep items, and is also an item itself
 
 [//]: # ()
@@ -40,17 +41,20 @@
 
 [//]: # (   // meaning can be `listOfItems` or `listOfPlaces`)
 
-2. `add`
-   
-   1. an `item`  to the current `place`
-   
-   2. a `place` to the current `place`
-   
+
 [//]: # (   3. a `place` to a `listOfPlaces`)
 
-4. `remove`
+2. **delete**
    1. an `item` from the current `place`
    2. a `place` from the current `place`
+
+3. **access**
+   1. an `item` in the current `place`
+   2. a `place` in the current `place`
+
+4. **exit**
+   1. an `item`
+   2. a `place`
 
 [//]: # (5. `find`)
 
