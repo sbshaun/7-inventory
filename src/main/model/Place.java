@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 
+
 // a place to keep items. A place can also be an item and can be kept at a place
 // e.g. a bag can be kept at a bigger bag
 public class Place extends Item {
@@ -103,7 +104,8 @@ public class Place extends Item {
     // }
 
 
-    // EFFECTS: return all items kept in the place
+
+    // EFFECTS: return all items kept in the place (at all deeper levels)
     public String getAll() {
         if (keptItems.isEmpty()) {
             return "";
@@ -124,8 +126,6 @@ public class Place extends Item {
 
         return allItems.toString();   // replace ", " in the end with "."
     }
-
-
 
     // EFFECTS: return all dates for importantDate of all items in the place
     public String getTimeline() {
@@ -149,9 +149,7 @@ public class Place extends Item {
 
         return timeline.toString();
     }
-
     // Methods above =========================
-
 
 
 

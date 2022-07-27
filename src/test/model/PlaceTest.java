@@ -111,7 +111,7 @@ class PlaceTest {
 
 
     @Test
-    void findTest() {
+    public void findTest() {
         place1.add(place2);
         place1.add(item1);
         place1.add(item2);
@@ -127,7 +127,7 @@ class PlaceTest {
     }
 
     @Test
-    void findDateTest() {
+    public void findDateTest() {
         Place place5 = new Place("5 place", "2022-07-09",
                 5, new ArrayList<>());
         LocalDate createdDate = place2.getCreatedDate();
@@ -161,34 +161,50 @@ class PlaceTest {
 
 
 
+//    @Test
+//    void getCurrentAllTest() {
+//        Item item4 = new Item("abcde", "2022-07-07",
+//                1, new ArrayList<>());
+//        Place place3 = new Place("3 place", "2022-11-07",
+//                3, new ArrayList<>());
+//
+//        String result1 = place1.getKeptItems().getCurrentAll();
+//
+//        place1.add(place2);
+//        place1.add(item1);
+//        place1.add(item2);
+//        place2.add(item3);
+//        place2.add(place3);
+//        place3.add(item4);
+//
+//        String result2 = place1.getKeptItems().getCurrentAll();
+//
+//        String result3 = place3.getKeptItems().getCurrentAll();
+//
+//        Place place = new Place("new place", "2022-11-07", 3, new ArrayList<>());
+//        String result4 = place.getKeptItems().getCurrentAll();
+//
+//        // TODO: if time permits: add index numbers
+//        String expectedResult2 = "\n2 place\nConcert ticket\nConcert ticket2";
+//        assertEquals("", result1);
+//        assertEquals(expectedResult2, result2);
+//        assertEquals("\nabcde", result3);
+//    }
+
     @Test
-    void getAllTest() {
-        Item item4 = new Item("abcde", "2022-07-07",
-                1, new ArrayList<>());
-        Place place3 = new Place("3 place", "2022-11-07",
-                3, new ArrayList<>());
-
-        String result1 = place1.getAll();
-
+    public void getAllTeest() {
         place1.add(place2);
-        place1.add(item1);
+        place2.add(item1);
         place1.add(item2);
         place2.add(item3);
-        place2.add(place3);
-        place3.add(item4);
 
-        String result2 = place1.getAll();
-
-        // TODO: if time permits: add index numbers
-        String expectedResult = "2 place\nOld ipad\n3 place\nabcde\nConcert ticket\nConcert ticket2\n";
-        assertEquals("", result1);
-        assertEquals(expectedResult, result2);
+        String result = place1.getAll();
+        String expectedResult = "2 place\n" + "Concert ticket\n" + "Old ipad\n" + "Concert ticket2\n";
+        assertEquals(expectedResult, result);
     }
 
-
-
     @Test
-    void getTimelineTest() {
+    public void getTimelineTest() {
         String result1 = place1.getTimeline();
 
         place1.add(place2);

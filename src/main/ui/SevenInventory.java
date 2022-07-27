@@ -78,26 +78,37 @@ public class SevenInventory {
     // EFFECTS: display a menu when currentPlace is null meaning we are at the top level
     public void displayTopLevelMenu() {
         System.out.println("We are at Top Level. Available Places: ");
-        System.out.println(listOfObjects.getEverything().trim());
-        System.out.println("Select from: ");
+        System.out.println(listOfObjects.getCurrentAll());
+        System.out.println("\nSelect from: ");
 //        System.out.println("1. Find an item (enter \"f\")");
         System.out.println("1. Create a place (enter \"p\")");
         System.out.println("2. Access a place (enter \"acc\")");
-//        System.out.println("4. Get a timeline of all important dates (enter \"t\")");
-        System.out.println("3. Quit (enter\"q\")");
+        System.out.println("3. Get a timeline of all important dates (enter \"t\")");
+        System.out.println("4. Quit (enter\"q\")");
     }
 
     // EFFECTS: display a menu when currentPlace is a Place meaning we are inside a place
     public void displayPlaceMenu() {
-        System.out.println("We are in \"" + currentPlace.getName() + "\". Available Objects: ");
-        System.out.println(currentPlace.getAll().trim());
+        System.out.println("\nWe are in \"" + currentPlace.getName() + "\": ");
+        System.out.print("(" + currentPlace.getCreatedDate() + ")");
+        String impDate = currentPlace.getImportantDate();
+        if (!impDate.equals("7777-07-17")) {
+            System.out.println("Important date: " + impDate);
+        }
+        int doi = currentPlace.getDegreeOfImportance();
+        if (doi != -777) {
+            System.out.println("Degree of importance: " + doi);
+        }
+        System.out.println("This place contains: ");
+        System.out.println(currentPlace.getKeptItems().getCurrentAll().trim());
         System.out.println("Select from: ");
         System.out.println("1. Create an item (enter \"i\")");
         System.out.println("2. Create a place (enter \"p\")");
         System.out.println("3. Access a place/item (enter \"acc\")");
         System.out.println("3. Delete the current place (enter\"d\")");
-        System.out.println("5. Go back to Top Level menu (enter \"b\")");
-        System.out.println("6. Quit (enter\"q\")");
+        System.out.println("5. Go back to last place (enter \"l\")");
+        System.out.println("6. Go back to Top Level menu (enter \"b\")");
+        System.out.println("7. Quit (enter\"q\")");
     }
 
     // MODIFIES: this
@@ -116,10 +127,11 @@ public class SevenInventory {
             createItem();
         } else if (input.matches("d.*")) {
             removePlace();
+        } else if (input.matches("l.*")) {
+            goBackToLastPlace();
+        } else if (input.matches("t.*")) {
+            getTimeline();
         }
-//        else if (input.matches("t.*")) {
-//            getTimeline();
-//        }
     }
 
     // MODIFIES: this
@@ -145,7 +157,7 @@ public class SevenInventory {
                     if (input.equals(i.getName())) {
                         currentPlace = (Place) i;
                         // pathOfPlaces.add((Place) i); // currentPlace = null, meaning Top at Level
-                        System.out.println("We now are inside " + i.getName() + ".");
+                        // System.out.println("We now are inside " + i.getName() + ".");
                         return;
                     }
                 }
@@ -161,12 +173,12 @@ public class SevenInventory {
     // EFFECTS: list items in a place if within a place, list all places if in Top Level
     private void listItems() {
         if (currentPlace == null) {
-            System.out.println("\nWe are at Top Level.");
-            System.out.println("Available places: \n" + listOfObjects.getEverything().trim());
+            System.out.println("\nWe are at Top Level. Available places:");
+            System.out.println(listOfObjects.getCurrentAll().trim());
             // TODO: not get everything, simply print out what's in listOfObjects
         } else {
             System.out.println("\nWe are in \"" + currentPlace.getName() + "\".");
-            System.out.println("Available objects: \n" + currentPlace.getAll().trim());
+            System.out.println("Available objects: \n" + currentPlace.getKeptItems().getCurrentAll().trim());
         }
     }
 
@@ -210,11 +222,11 @@ public class SevenInventory {
         System.out.println("Important date: " + currentItem.getImportantDate());
         System.out.println("Degree of importance: " + currentItem.getDegreeOfImportance());
         System.out.println("Created date: " + currentItem.getCreatedDate());
-        // System.out.println("Key words: " + currentItem.getKeywords());
+        // System.out.println("Key words: " + currentItem.getKeywords()); TODO: keywords
         String input;
         while (true) {
             System.out.println("\nDelete the item (enter \"d\")");
-            System.out.println("Go back to last place (enter \"l\")");
+            System.out.println("Exit item, go to the current place (enter \"l\")");
             input = scanner.next();
 
             if (input.matches("d.*")) {
@@ -234,10 +246,10 @@ public class SevenInventory {
     private void tryAgain() {
         if (currentPlace == null) {
             System.out.println("Wrong name, try again: ");
-            System.out.println("Places available: " + listOfObjects.getEverything().trim());
+            System.out.println("Places available: \n" + listOfObjects.getCurrentAll().trim());
         } else {
             System.out.println("Wrong name, try again: ");
-            System.out.println("Objects available: " + currentPlace.getAll().trim());
+            System.out.println("Objects available: \n" + currentPlace.getKeptItems().getCurrentAll().trim());
         }
     }
 
@@ -287,10 +299,10 @@ public class SevenInventory {
 
 
 //    TODO: timeline
-//    private void getTimeline() {
-//        System.out.println("Important dates timeline in all places: ");
-//        System.out.println(listOfObjects.getEveryTimeline());
-//    }
+    private void getTimeline() {
+        System.out.println("Important dates in all places: ");
+        System.out.println(listOfObjects.getEveryTimeline() + "\n");
+    }
 
     // TODO: find method, if time permits
 //    private void findItem() {
@@ -355,7 +367,7 @@ public class SevenInventory {
     private void askItemInfo() {
         String input;
         currentImportantDate = "7777-07-17"; // set default
-        currentDegreeOfImportance = 0;
+        currentDegreeOfImportance = -777;
         currentKeywords = new ArrayList<>();
 
 

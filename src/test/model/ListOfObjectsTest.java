@@ -9,6 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ListOfObjectsTest {
     private ListOfObjects listOfObjects;
+    private Place place1;
+    private Place place2;
+    private Place place3;
+    private Item item1;
+    private Item item2;
+    private Item item3;
 
     @BeforeEach
     public void setup() {
@@ -21,16 +27,16 @@ class ListOfObjectsTest {
 
         listOfObjects = new ListOfObjects();
 
-        Place place1 = new Place("A place", "2022-07-17",
+        place1 = new Place("A place", "2022-07-17",
                 7, keywords);
-        Place place2 = new Place("2 place", "2022-11-11",
+        place2 = new Place("2 place", "2022-11-11",
                 5, keywords);
-        Place place3 = new Place("3 place", "2022-11-17",
+        place3 = new Place("3 place", "2022-11-17",
                 11, keywords);
 
-        Item item1 = new Item("Concert ticket", "2022-09-19", 7, keywords);
-        Item item2 = new Item("Concert ticket", "2022-07-27", 5, keywords);
-        Item item3 = new Item("Old ipad", "2022-09-27", 3, keywords);
+        item1 = new Item("Concert ticket", "2022-09-19", 7, keywords);
+        item2 = new Item("Concert ticket", "2022-07-27", 5, keywords);
+        item3 = new Item("Old ipad", "2022-09-27", 3, keywords);
 
         listOfObjects.add(place1);
         listOfObjects.add(place2);
@@ -49,8 +55,33 @@ class ListOfObjectsTest {
         assertEquals(lobj, listOfObjects);
     }
 
+
     @Test
-    void getEverythingTest() {
+    public void getAllPlacesTest() {
+        listOfObjects = new ListOfObjects();
+        listOfObjects.add(place1);
+        listOfObjects.add(place2);
+        place1.add(place1);
+        place1.add(place2);
+        place2.add(place2);
+        place2.add(place3);
+        place3.add(item1);
+        place3.add(item2);
+        place3.add(item3);
+
+        String expectedResult = "\nA place\n2 place";
+        String result = listOfObjects.getCurrentAll();
+
+        listOfObjects = new ListOfObjects();
+        String result2  = listOfObjects.getCurrentAll();
+
+        assertEquals(expectedResult, result);
+        assertEquals("", result2);
+    }
+
+
+    @Test
+    public void getEverythingTest() {
 
         String expectedResult = "A place\n2 place\n3 place\nConcert ticket\nConcert ticket\nOld ipad\n";
 
@@ -64,16 +95,26 @@ class ListOfObjectsTest {
     }
 
     @Test
-    void getEveryTimelineTest() {
-        String expectedResult = "A place 2022-07-17\nConcert ticket 2022-07-27\nConcert ticket 2022-09-19\n" +
-                "Old ipad 2022-09-27\n2 place 2022-11-11\n3 place 2022-11-17\n";
+    public void getEveryTimelineTest() {
+        String expectedResult1 = "\nA place 2022-07-17\nConcert ticket 2022-07-27\nConcert ticket 2022-09-19\n" +
+                "Old ipad 2022-09-27\n2 place 2022-11-11\n3 place 2022-11-17";
 
         String result1 = listOfObjects.getEveryTimeline();
 
         listOfObjects = new ListOfObjects();
         String result2  = listOfObjects.getEveryTimeline();
 
-        assertEquals(expectedResult, result1);
+        place3.add(item3);
+        place2.add(place3);
+        place2.add(item2);
+        place2.add(item1);
+        place1.add(place2);
+
+        listOfObjects.add(place1);
+        String result3 = listOfObjects.getEveryTimeline();
+
+        assertEquals(expectedResult1, result1);
         assertEquals("", result2);
+        assertEquals(expectedResult1, result3);
     }
 }

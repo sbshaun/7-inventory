@@ -2,13 +2,48 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
 
 // A list of Places
 public class ListOfObjects extends ArrayList<Item> {
 
     // Methods below ========================
 
-    // EFFECTS: return all places and items in all places
+    // TODO: tests
+//    // EFFECTS: return all places in Top Level
+//    public String getAllPlaces() {
+//        if (this.isEmpty()) {
+//            return "";
+//        }
+//
+//        StringBuilder allPlaces = new StringBuilder();
+//
+//        for (Item i: this) {
+//            allPlaces.append("\n");
+//            allPlaces.append(i.getName());
+//        }
+//
+//        return allPlaces.toString();
+//    }
+
+
+    // EFFECTS: return items kept in the current place, not going into items
+    public String getCurrentAll() {
+        if (this.isEmpty()) {
+            return "";
+        }
+
+        StringBuilder allItems = new StringBuilder();
+
+        for (Item i: this) {
+            allItems.append("\n");
+            allItems.append(i.getName());
+        }
+
+        return allItems.toString();   // replace ", " in the end with "."
+    }
+
+    // EFFECTS: return all places and items in all places (going into deeper levels)
     public String getEverything() {
         if (this.isEmpty()) {
             return "";
@@ -46,27 +81,33 @@ public class ListOfObjects extends ArrayList<Item> {
 
         StringBuilder timeline = new StringBuilder();
         for (Item i: copy) {
-            timeline.append(i.getName());
-            timeline.append(" ");
-            timeline.append(i.getImportantDate());
-            timeline.append("\n");
+            String impDate = i.getImportantDate();
+            if (!impDate.equals("7777-07-17")) {
+                timeline.append("\n");
+                timeline.append(i.getName());
+                timeline.append(" ");
+                timeline.append(impDate);
+            }
         }
 
         return timeline.toString();
     }
 
-    // EFFECTS: get all kept items in this
+    // TODO: after printing out timeline, Top Level messed up
+    // TODO: remove dates for items without importantDate
+    // EFFECTS: get all kept items in this (at all levels)
     private ListOfObjects addAllItems(ListOfObjects loob) {
-        ListOfObjects listOfObjects = new ListOfObjects();
-        for (Item item: loob) {
+        ListOfObjects copy = new ListOfObjects();
+        for (Item item: loob) { // TODO: would Place be casted as Item implicitly?
             if ((item.getClass().equals(Place.class))) {
-                listOfObjects.add(item);
-                addAllItems(((Place) item).getKeptItems());
+                copy.add(item);
+                ListOfObjects itemsInsidePlace = addAllItems(((Place) item).getKeptItems());
+                copy.addAll(itemsInsidePlace);
             } else {
-                listOfObjects.add(item);
+                copy.add(item);
             }
         }
-        return listOfObjects;
+        return copy;
     }
     // Methods above ========================
 }
