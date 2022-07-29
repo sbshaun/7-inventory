@@ -95,7 +95,7 @@ public class Place extends Item {
     //    private boolean isSimilarString(String s1, String s2) {
     // TODO:
     //return true; // stub
-    //    }
+    //    } longest  common substring
 
     // TODO:
     // Approximate for date.

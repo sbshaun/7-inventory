@@ -41,9 +41,10 @@ public class SevenInventory {
 
         do {
             System.out.println("\nEnter \"I like the project\" to continue: ");
+            System.out.print(">>> ");
             input = scanner.nextLine().toLowerCase().replaceAll("\\s+", "");
             // TODO:  if time permits, normalize string: remove extra space in the middle
-        } while (!input.equals("iliketheproject"));
+        } while (!input.matches("ilike.*"));
 
         while (true) {
             if (listOfObjects.isEmpty()) {
@@ -56,6 +57,7 @@ public class SevenInventory {
                 displayPlaceMenu();
             }
 
+            System.out.print(">>> ");
             input = scanner.next().toLowerCase();
 
             if (input.equals("q")) {
@@ -89,8 +91,8 @@ public class SevenInventory {
 
     // EFFECTS: display a menu when currentPlace is a Place meaning we are inside a place
     public void displayPlaceMenu() {
-        System.out.println("\nWe are in \"" + currentPlace.getName() + "\": ");
-        System.out.print("(" + currentPlace.getCreatedDate() + ")");
+        System.out.println("\nWe are in \"" + currentPlace.getName() + "\""
+                + " (created on " + currentPlace.getCreatedDate() + ")" + ": ");
         String impDate = currentPlace.getImportantDate();
         if (!impDate.equals("7777-07-17")) {
             System.out.println("Important date: " + impDate);
@@ -151,6 +153,7 @@ public class SevenInventory {
         listItems();
         String input;
         while (true) {
+            System.out.print(">>> ");
             input = scanner.next();
             if (currentPlace == null) {
                 for (Item i: listOfObjects) {
@@ -173,9 +176,8 @@ public class SevenInventory {
     // EFFECTS: list items in a place if within a place, list all places if in Top Level
     private void listItems() {
         if (currentPlace == null) {
-            System.out.println("\nWe are at Top Level. Available places:");
+            System.out.println("\nWe are at Top Level. Select from available places:");
             System.out.println(listOfObjects.getCurrentAll().trim());
-            // TODO: not get everything, simply print out what's in listOfObjects
         } else {
             System.out.println("\nWe are in \"" + currentPlace.getName() + "\".");
             System.out.println("Available objects: \n" + currentPlace.getKeptItems().getCurrentAll().trim());
@@ -227,6 +229,7 @@ public class SevenInventory {
         while (true) {
             System.out.println("\nDelete the item (enter \"d\")");
             System.out.println("Exit item, go to the current place (enter \"l\")");
+            System.out.print(">>> ");
             input = scanner.next();
 
             if (input.matches("d.*")) {
@@ -247,9 +250,11 @@ public class SevenInventory {
         if (currentPlace == null) {
             System.out.println("Wrong name, try again: ");
             System.out.println("Places available: \n" + listOfObjects.getCurrentAll().trim());
+            System.out.print(">>> ");
         } else {
             System.out.println("Wrong name, try again: ");
             System.out.println("Objects available: \n" + currentPlace.getKeptItems().getCurrentAll().trim());
+            System.out.print(">>> ");
         }
     }
 
@@ -336,6 +341,7 @@ public class SevenInventory {
     // EFFECTS: create a place and add it to currentPlace
     private void createPlace() {
         System.out.println("\nName the place: ");
+        System.out.print(">>> ");
         currentName = scanner.next(); // TODO: normalize string
 
         askItemInfo();
@@ -352,6 +358,7 @@ public class SevenInventory {
     // EFFECTS: create an item and add it to current listOfObjects
     private void createItem() {
         System.out.println("\nName the item: ");
+        System.out.print(">>> ");
         currentName = scanner.next();    // TODO: normalize string if time permits
 
         askItemInfo();
@@ -377,7 +384,7 @@ public class SevenInventory {
             System.out.println("Degree of importance (doi)");
             System.out.println("Keywords (key)");
             System.out.println("Enter \"ok\" if done");
-
+            System.out.print(">>> ");
             input = scanner.next().toLowerCase();
 
             if (input.matches("o.*")) {
@@ -407,6 +414,7 @@ public class SevenInventory {
 
         while (true) {
             System.out.println("Enter a date (yyyy-MM-dd): ");
+            System.out.print(">>> ");
             input = formatInputDate(scanner.next());
             if (isDateValid(input)) {
                 currentImportantDate = input;
@@ -442,6 +450,7 @@ public class SevenInventory {
 
         while (true) {
             System.out.println("Enter any whole number (whichever value makes sense to you): ");
+            System.out.print(">>> ");
             input = scanner.next();
             if (input.matches("-?\\d+")) {
                 try {
@@ -462,10 +471,11 @@ public class SevenInventory {
         String input;
 
         while (true) {
-            System.out.println("Enter a keyword (enter \"q\" is you are finished): ");
+            System.out.println("Enter a keyword (enter \"ok\" if you are finished): ");
+            System.out.print(">>> ");
             input = scanner.next();
 
-            if (input.equals("q")) {
+            if (input.equals("ok")) {
                 break;
             }
 
