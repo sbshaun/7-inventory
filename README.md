@@ -160,6 +160,8 @@ As a user, I want to be able to
 - _go back to previous `place`_
 - _go back to Top Level_
 - _see all `item` in a `place`_
+- _save my inventory_
+- _reload my previous inventory_
 
 [//]: # (- _get a timeline for all `item` in all `place`_)
 [//]: # (- _find an `item` by its name_)
