@@ -1,14 +1,16 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 
-
 // a place to keep items. A place can also be an item and can be kept at a place
 // e.g. a bag can be kept at a bigger bag
-public class Place extends Item {
+public class Place extends Item implements Writable {
     private final ListOfObjects keptItems; // items kept in this place
 
 
@@ -19,6 +21,7 @@ public class Place extends Item {
         super(name, importantDate, degreeOfImportance, keywords);
         keptItems = new ListOfObjects();
     }
+
     // Constructors above ========================
 
 
@@ -64,7 +67,7 @@ public class Place extends Item {
     }
 
     // TODO:
-    // Fuzzy seach/ approximate string search. use Levenshtein Distance
+    // Fuzzy search / approximate string search. use Levenshtein Distance
     //    // EFFECT: return index of the item if any keyword is match by an item , -1 if not found
     //    public int tryFind(String keyword) {
     //        // can be private
@@ -149,6 +152,17 @@ public class Place extends Item {
 
         return timeline.toString();
     }
+
+    @Override
+    // EFFECTS: return this as a JSON object
+    // Reference: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    public JSONObject toJson() {
+        JSONObject jsonObject;
+        jsonObject = super.toJson();
+        jsonObject.put("keptItems", keptItems.listOfObjectsToJson());
+        return jsonObject;
+    }
+
     // Methods above =========================
 
 

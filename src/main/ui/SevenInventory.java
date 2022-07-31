@@ -3,7 +3,11 @@ package ui;
 import model.Item;
 import model.Place;
 import model.ListOfObjects;
+import persistence.JsonWriter;
+import persistence.ListOfObjectsJsonReader;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -14,9 +18,13 @@ import java.util.Scanner;
 public class SevenInventory {
     // Next phase:
     // TODO: finish search method: look up items, using LevenshteinDistance
-    // TODO: finish getTimelinee method.
+    // TODO: finish getTimeline method.
     // TODO: finish add get all items: print out all items in all places
-    private ListOfObjects listOfObjects;
+    private static final String JSON_STORE = "./data/sevenInventory.json";
+    private JsonWriter jsonWriter;
+    private ListOfObjectsJsonReader jsonReader;
+
+    private ListOfObjects topLevel;
     private LinkedList<Place> pathOfPlaces;
     private Place currentPlace = null;
     private Place previousPlace = null;
@@ -40,14 +48,13 @@ public class SevenInventory {
         init();
 
         do {
-            System.out.println("\nEnter \"I like the project\" to continue: ");
-            System.out.print(">>> ");
+            System.out.print("\nEnter \"I like the project\" to continue: \n>>>");
             input = scanner.nextLine().toLowerCase().replaceAll("\\s+", "");
             // TODO:  if time permits, normalize string: remove extra space in the middle
         } while (!input.matches("ilike.*"));
 
         while (true) {
-            if (listOfObjects.isEmpty()) {
+            if (topLevel.isEmpty()) {
                 // when Top Level has no place
                 displayEmptyMenu();
             } else if (currentPlace == null) {
@@ -61,6 +68,7 @@ public class SevenInventory {
             input = scanner.next().toLowerCase();
 
             if (input.equals("q")) {
+                saveSevenInventory();
                 System.out.println("Program quit.");
                 break;
             }
@@ -73,14 +81,15 @@ public class SevenInventory {
     // EFFECTS: display a menu when listOfPlaces is empty
     public void displayEmptyMenu() {
         System.out.println("We are at Top Level, no available places. Select from: ");
-        System.out.println("1. Create a place (enter \"p\")");
-        System.out.println("2. Quit (enter\"q\")");
+        System.out.println("1. Load file from last time (enter \"ld\")");
+        System.out.println("2. Create a place (enter \"p\")");
+        System.out.println("3. Quit (enter\"q\")");
     }
 
     // EFFECTS: display a menu when currentPlace is null meaning we are at the top level
     public void displayTopLevelMenu() {
         System.out.println("We are at Top Level. Available Places: ");
-        System.out.println(listOfObjects.getCurrentAll());
+        System.out.println(topLevel.getCurrentAll());
         System.out.println("\nSelect from: ");
 //        System.out.println("1. Find an item (enter \"f\")");
         System.out.println("1. Create a place (enter \"p\")");
@@ -129,12 +138,43 @@ public class SevenInventory {
             createItem();
         } else if (input.matches("d.*")) {
             removePlace();
+        } else if (input.matches("ld.*")) {
+            loadSevenInventory();
         } else if (input.matches("l.*")) {
             goBackToLastPlace();
         } else if (input.matches("t.*")) {
             getTimeline();
         }
     }
+
+    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
+    // EFFECTS: saves the workroom to file
+    private void saveSevenInventory() {
+        try {
+            jsonWriter.open();
+            jsonWriter.writeTopLevel(topLevel);
+            jsonWriter.close();
+            System.out.println("Everything is saved to" + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadSevenInventory() {
+        try {
+            topLevel = jsonReader.read();
+            System.out.println("Loaded everything from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////
 
     // MODIFIES: this
     // EFFECTS: reset fields to go  back to Top Level
@@ -156,7 +196,7 @@ public class SevenInventory {
             System.out.print(">>> ");
             input = scanner.next();
             if (currentPlace == null) {
-                for (Item i: listOfObjects) {
+                for (Item i: topLevel) {
                     if (input.equals(i.getName())) {
                         currentPlace = (Place) i;
                         // pathOfPlaces.add((Place) i); // currentPlace = null, meaning Top at Level
@@ -177,7 +217,7 @@ public class SevenInventory {
     private void listItems() {
         if (currentPlace == null) {
             System.out.println("\nWe are at Top Level. Select from available places:");
-            System.out.println(listOfObjects.getCurrentAll().trim());
+            System.out.println(topLevel.getCurrentAll().trim());
         } else {
             System.out.println("\nWe are in \"" + currentPlace.getName() + "\".");
             System.out.println("Available objects: \n" + currentPlace.getKeptItems().getCurrentAll().trim());
@@ -249,7 +289,7 @@ public class SevenInventory {
     private void tryAgain() {
         if (currentPlace == null) {
             System.out.println("Wrong name, try again: ");
-            System.out.println("Places available: \n" + listOfObjects.getCurrentAll().trim());
+            System.out.println("Places available: \n" + topLevel.getCurrentAll().trim());
             System.out.print(">>> ");
         } else {
             System.out.println("Wrong name, try again: ");
@@ -275,7 +315,7 @@ public class SevenInventory {
     private void removePlace() {
         if (previousPlace == null) {
             // when we are at a place of Top Level
-            listOfObjects.remove(currentPlace);
+            topLevel.remove(currentPlace);
             goBackToLastPlace();
         } else {
             // when we are in a place inside some other place
@@ -293,8 +333,10 @@ public class SevenInventory {
     // EFFECTS: initialize listOfPlaces and scanner
     private void init() {
         pathOfPlaces = new LinkedList<>();
-        listOfObjects = new ListOfObjects();
+        topLevel = new ListOfObjects();
         scanner = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new ListOfObjectsJsonReader(JSON_STORE);
     }
 
 //    // EFFECTS: remove extra blank space in the input String
@@ -306,7 +348,7 @@ public class SevenInventory {
 //    TODO: timeline
     private void getTimeline() {
         System.out.println("Important dates in all places: ");
-        System.out.println(listOfObjects.getEveryTimeline() + "\n");
+        System.out.println(topLevel.getEveryTimeline() + "\n");
     }
 
     // TODO: find method, if time permits
@@ -348,7 +390,7 @@ public class SevenInventory {
         Place place = new Place(currentName, currentImportantDate, currentDegreeOfImportance, currentKeywords);
         // add place to the current place, and change the current place to the place just created
         if (currentPlace == null) {
-            listOfObjects.add(place);
+            topLevel.add(place);
         } else {
             currentPlace.add(place);
         }

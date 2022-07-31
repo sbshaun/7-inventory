@@ -30,4 +30,13 @@ class ItemTest {
         assertEquals(5, degOfImp);
         assertEquals(keywords, itemKeywords);
     }
+
+    @Test
+    public void hashCodeTest() {
+        Item item1 = new Item("a", "2022-10-01", 7, new ArrayList<>());
+        Item item2 = new Item("a", "2022-10-01", 7, new ArrayList<>());
+
+        assertEquals(item1, item2);
+        assertEquals(item1.hashCode(), item2.hashCode());
+    }
 }

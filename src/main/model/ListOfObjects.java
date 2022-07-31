@@ -1,11 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Date;
 
 // A list of Places
-public class ListOfObjects extends ArrayList<Item> {
+public class ListOfObjects extends ArrayList<Item> implements Writable {
 
     // Methods below ========================
 
@@ -25,7 +28,6 @@ public class ListOfObjects extends ArrayList<Item> {
 //
 //        return allPlaces.toString();
 //    }
-
 
     // EFFECTS: return items kept in the current place, not going into items
     public String getCurrentAll() {
@@ -108,6 +110,27 @@ public class ListOfObjects extends ArrayList<Item> {
             }
         }
         return copy;
+    }
+
+
+    @Override
+    // EFFECTS: return this as a JSON object
+    // Reference: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("listOfObjects", listOfObjectsToJson());
+        return jsonObject;
+    }
+
+    // EFFECTS: return this as a JSON array
+    public JSONArray listOfObjectsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Item item : this) {
+            jsonArray.put(item.toJson());
+        }
+
+        return jsonArray;
     }
     // Methods above ========================
 }

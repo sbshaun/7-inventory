@@ -1,0 +1,28 @@
+{"topLevel": [{
+    "createdDate": "2022-07-31",
+    "keywords": [],
+    "name": "place1",
+    "degreeOfImportance": 1,
+    "keptItems": [
+        {
+            "createdDate": "2022-07-31",
+            "keywords": [],
+            "name": "item1",
+            "degreeOfImportance": 2,
+            "importantDate": "2001-01-01"
+        },
+        {
+            "createdDate": "2022-07-31",
+            "keywords": [
+                "abc",
+                "def",
+                "ghe"
+            ],
+            "name": "place2",
+            "degreeOfImportance": 2,
+            "keptItems": [],
+            "importantDate": "2022-02-02"
+        }
+    ],
+    "importantDate": "1111-11-11"
+}]}
