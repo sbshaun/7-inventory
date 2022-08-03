@@ -95,7 +95,8 @@ public class SevenInventory {
         System.out.println("1. Create a place (enter \"p\")");
         System.out.println("2. Access a place (enter \"acc\")");
         System.out.println("3. Get a timeline of all important dates (enter \"t\")");
-        System.out.println("4. Quit (enter\"q\")");
+        System.out.println("4. Save (enter\"s\")");
+        System.out.println("5. Quit (enter\"q\")");
     }
 
     // EFFECTS: display a menu when currentPlace is a Place meaning we are inside a place
@@ -117,7 +118,7 @@ public class SevenInventory {
         System.out.println("2. Create a place (enter \"p\")");
         System.out.println("3. Access a place/item (enter \"acc\")");
         System.out.println("3. Delete the current place (enter\"d\")");
-        System.out.println("5. Go back to last place (enter \"l\")");
+        System.out.println("5. Go back to last place (enter \"la\")");
         System.out.println("6. Go back to Top Level menu (enter \"b\")");
         System.out.println("7. Quit (enter\"q\")");
     }
@@ -140,10 +141,12 @@ public class SevenInventory {
             removePlace();
         } else if (input.matches("ld.*")) {
             loadSevenInventory();
-        } else if (input.matches("l.*")) {
+        } else if (input.matches("la.*")) {
             goBackToLastPlace();
         } else if (input.matches("t.*")) {
             getTimeline();
+        } else if (input.matches("s.*")) {
+            saveSevenInventory();
         }
     }
 
