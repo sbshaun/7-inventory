@@ -12,23 +12,6 @@ public class ListOfObjects extends ArrayList<Item> implements Writable {
 
     // Methods below ========================
 
-    // TODO: tests
-//    // EFFECTS: return all places in Top Level
-//    public String getAllPlaces() {
-//        if (this.isEmpty()) {
-//            return "";
-//        }
-//
-//        StringBuilder allPlaces = new StringBuilder();
-//
-//        for (Item i: this) {
-//            allPlaces.append("\n");
-//            allPlaces.append(i.getName());
-//        }
-//
-//        return allPlaces.toString();
-//    }
-
     // EFFECTS: return items kept in the current place, not going into items
     public String getCurrentAll() {
         if (this.isEmpty()) {
@@ -87,7 +70,7 @@ public class ListOfObjects extends ArrayList<Item> implements Writable {
             if (!impDate.equals("7777-07-17")) {
                 timeline.append("\n");
                 timeline.append(i.getName());
-                timeline.append(" ");
+                timeline.append(": ");
                 timeline.append(impDate);
             }
         }
@@ -95,12 +78,10 @@ public class ListOfObjects extends ArrayList<Item> implements Writable {
         return timeline.toString();
     }
 
-    // TODO: after printing out timeline, Top Level messed up
-    // TODO: remove dates for items without importantDate
     // EFFECTS: get all kept items in this (at all levels)
     private ListOfObjects addAllItems(ListOfObjects loob) {
         ListOfObjects copy = new ListOfObjects();
-        for (Item item: loob) { // TODO: would Place be casted as Item implicitly?
+        for (Item item: loob) {
             if ((item.getClass().equals(Place.class))) {
                 copy.add(item);
                 ListOfObjects itemsInsidePlace = addAllItems(((Place) item).getKeptItems());

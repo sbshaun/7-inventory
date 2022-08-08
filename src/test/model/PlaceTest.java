@@ -192,7 +192,7 @@ class PlaceTest {
 //    }
 
     @Test
-    public void getAllTeest() {
+    public void getAllTest() {
         place1.add(place2);
         place2.add(item1);
         place1.add(item2);
@@ -223,4 +223,16 @@ class PlaceTest {
         assertEquals("\"A place\" 2022-11-11\n", result2);
         assertEquals(expectedResult, result3);
     }
+
+//    @Test
+//    public void findInAllPlacesTest() {
+//        place1.add(place2);
+//        Place place3 = new Place("place3", "2022-02-02", 3, null);
+//        place2.add(item2);
+//        place2.add(place3);
+//        place3.add(item3);
+//
+//        assertNull(place1.findInAllPlaces("notExistName"));
+//        assertEquals("\"A place\" -> \"2 place\" -> \"place3\"", place1.findInAllPlaces("place3"));
+//    }
 }

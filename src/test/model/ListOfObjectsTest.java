@@ -98,8 +98,8 @@ class ListOfObjectsTest {
 
     @Test
     public void getEveryTimelineTest() {
-        String expectedResult1 = "\nA place 2022-07-17\nConcert ticket 2022-07-27\nConcert ticket 2022-09-19\n" +
-                "Old ipad 2022-09-27\n2 place 2022-11-11\n3 place 2022-11-17";
+        String expectedResult1 = "\nA place: 2022-07-17\nConcert ticket: 2022-07-27\nConcert ticket: 2022-09-19\n" +
+                "Old ipad: 2022-09-27\n2 place: 2022-11-11\n3 place: 2022-11-17";
 
         String result1 = listOfObjects.getEveryTimeline();
 

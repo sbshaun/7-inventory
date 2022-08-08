@@ -26,14 +26,14 @@ public class SevenInventory {
 
     private ListOfObjects topLevel;
     private LinkedList<Place> pathOfPlaces;
-    private Place currentPlace = null;
-    private Place previousPlace = null;
-    private Item currentItem = null;
-    private Scanner scanner;
-    private String currentName = null;
-    private String currentImportantDate = null; //if time sensitive. e.g. effective date, expiry date...
-    private int currentDegreeOfImportance = 0; // if important, how important it is
-    private ArrayList<String> currentKeywords = null; // related to the item for easy lookup
+    private Place currentPlace = null; // whenever we access a place, set the place as current
+    private Place previousPlace = null; // when we access a place inside a place, set current place to previous
+    private Item currentItem = null; // item we currently have access
+    private Scanner scanner; // get user input
+    private String name = null;
+    private String importantDate = null;
+    private int degreeOfImportance = 0;
+    private ArrayList<String> keywords = null;
 
     // EFFECTS: runs the 7-Inventory application. Some code from TellerApp.java
     public SevenInventory() {
@@ -45,38 +45,48 @@ public class SevenInventory {
     private void runApp() {
         String input;
 
+        // instantiate pathOfPlaces, topLevel, scanner, jsonWriter, jsonReader
         init();
 
-        do {
+        do { // Loop until user typed I like (the project) :)
             System.out.print("\nEnter \"I like the project\" to continue: \n>>>");
             input = scanner.nextLine().toLowerCase().replaceAll("\\s+", "");
             // TODO:  if time permits, normalize string: remove extra space in the middle
         } while (!input.matches("ilike.*"));
 
-        while (true) {
-            if (topLevel.isEmpty()) {
-                // when Top Level has no place
+        while (true) { // Loop until user chose to quit
+            if (topLevel.isEmpty()) { // when Top Level has no place to access
                 displayEmptyMenu();
-            } else if (currentPlace == null) {
-                // meaning  we are at the Top Level
+            } else if (currentPlace == null) { // meaning  we are at the Top Level
                 displayTopLevelMenu();
-            } else {
+            } else { // if currentPlace is assigned a place, meaning we are inside a place
                 displayPlaceMenu();
             }
 
+            // get user input
             System.out.print(">>> ");
             input = scanner.next().toLowerCase();
 
+            // break when user entered q
             if (input.equals("q")) {
-                saveSevenInventory();
+                saveSevenInventory(); // automatically save when quit
                 System.out.println("Program quit.");
-                break;
+                break; // exit the while loop, program ends.
             }
 
             processInput(input);
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: initialize listOfPlaces and scanner
+    private void init() {
+        pathOfPlaces = new LinkedList<>();
+        topLevel = new ListOfObjects();
+        scanner = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new ListOfObjectsJsonReader(JSON_STORE);
+    }
 
     // EFFECTS: display a menu when listOfPlaces is empty
     public void displayEmptyMenu() {
@@ -101,16 +111,22 @@ public class SevenInventory {
 
     // EFFECTS: display a menu when currentPlace is a Place meaning we are inside a place
     public void displayPlaceMenu() {
+        // Print: We are in "Place.name" (created on "date"):
         System.out.println("\nWe are in \"" + currentPlace.getName() + "\""
                 + " (created on " + currentPlace.getCreatedDate() + ")" + ": ");
         String impDate = currentPlace.getImportantDate();
+
+        // Check if user entered a date, since "7777-07-17" is by default
         if (!impDate.equals("7777-07-17")) {
             System.out.println("Important date: " + impDate);
         }
         int doi = currentPlace.getDegreeOfImportance();
+
+        // Check if user entered a doi, since -777 is by default
         if (doi != -777) {
             System.out.println("Degree of importance: " + doi);
         }
+
         System.out.println("This place contains: ");
         System.out.println(currentPlace.getKeptItems().getCurrentAll().trim());
         System.out.println("Select from: ");
@@ -120,7 +136,7 @@ public class SevenInventory {
         System.out.println("3. Delete the current place (enter\"d\")");
         System.out.println("5. Go back to last place (enter \"la\")");
         System.out.println("6. Go back to Top Level menu (enter \"b\")");
-        System.out.println("7. Quit (enter\"q\")");
+        System.out.println("7. Quit (enter \"q\")");
     }
 
     // MODIFIES: this
@@ -175,18 +191,27 @@ public class SevenInventory {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
-    ////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    // Main methods below
 
     // MODIFIES: this
-    // EFFECTS: reset fields to go  back to Top Level
-    private void backToTopLevel() {
-        pathOfPlaces.clear();
-        previousPlace = null;
-        currentPlace = null;
-        currentItem = null;
-        // while loop will display the Top Level Menu automatically
+    // EFFECTS: create a place and add it to currentPlace
+    private void createPlace() {
+        System.out.println("\nName the place: ");
+        System.out.println("\nName the place: ");
+        System.out.print(">>> ");
+        name = scanner.next(); // TODO: normalize string
+
+        askItemInfo();
+        Place place = new Place(name, importantDate, degreeOfImportance, keywords);
+        // add place to the current place, and change the current place to the place just created
+        if (currentPlace == null) {
+            topLevel.add(place);
+        } else {
+            currentPlace.add(place);
+        }
     }
 
     // MODIFIES: this
@@ -216,51 +241,28 @@ public class SevenInventory {
         }
     }
 
-    // EFFECTS: list items in a place if within a place, list all places if in Top Level
-    private void listItems() {
-        if (currentPlace == null) {
-            System.out.println("\nWe are at Top Level. Select from available places:");
-            System.out.println(topLevel.getCurrentAll().trim());
-        } else {
-            System.out.println("\nWe are in \"" + currentPlace.getName() + "\".");
-            System.out.println("Available objects: \n" + currentPlace.getKeptItems().getCurrentAll().trim());
-        }
-    }
-
-
-
-    // MODIFIES: this
-    // EFFECTS: set currentPlace if input name is a place, set currentItem if specified an item name
-    private boolean setItem(String input) {
-        if (currentPlace == null) {
-            return false;
-        } else if (currentPlace.getKeptItems().isEmpty()) {
-            System.out.println("Current place is empty, Nothing to access.");
-            return true;
-        }
-        for (Item i: currentPlace.getKeptItems()) {
-            if (input.equals(i.getName())) {
-                if (i.getClass().equals(Place.class)) {
-                    // if we are not in Top Level, we copy the currentPlace to previousPlace and set new currentPlace
-                    if (previousPlace != null) {
-                        pathOfPlaces.add(previousPlace); // add previous place to path
-                    }
-                    previousPlace = currentPlace;
-                    currentPlace = (Place) i;
-                } else {
-                    // if the input item is type Item, simply set currentItem
-                    currentItem = i;
-                    displayItemInfo();
-                    return true;
-                }
-                return true;
-            }
-        }
-        return false;
+    private void getTimeline() {
+        System.out.println("Important dates in all places: ");
+        System.out.println(topLevel.getEveryTimeline() + "\n");
     }
 
     // MODIFIES: this
-    // EFFECTS: delete or exit the item
+    // EFFECTS: create an item and add it to current listOfObjects
+    private void createItem() {
+        System.out.println("\nName the item: ");
+        System.out.print(">>> ");
+        name = scanner.next();    // TODO: normalize string if time permits
+
+        askItemInfo();
+
+        Item item = new Item(name, importantDate, degreeOfImportance, keywords);
+
+        assert currentPlace != null;
+        currentPlace.add(item);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: display Item info, and then delete or exit the item
     private void displayItemInfo() {
         assert currentItem != null;
         System.out.println("Item: " + currentItem.getName());
@@ -288,31 +290,6 @@ public class SevenInventory {
         }
     }
 
-    // EFFECTS: print try again if the name is not matched by any item
-    private void tryAgain() {
-        if (currentPlace == null) {
-            System.out.println("Wrong name, try again: ");
-            System.out.println("Places available: \n" + topLevel.getCurrentAll().trim());
-            System.out.print(">>> ");
-        } else {
-            System.out.println("Wrong name, try again: ");
-            System.out.println("Objects available: \n" + currentPlace.getKeptItems().getCurrentAll().trim());
-            System.out.print(">>> ");
-        }
-    }
-
-    // MODIFIES: this
-    // EFFECTS: go back to last place
-    private void goBackToLastPlace() {
-        if (previousPlace == null) {
-            currentPlace = null;
-            pathOfPlaces.clear();
-        } else {
-            currentPlace = previousPlace; // go back to previousPlace from currentPlace
-            previousPlace = pathOfPlaces.pollLast(); // get the previousPlace before the current previousPlace
-        }
-    }
-
     /// MODIFIES: this
     // EFFECTS: remove current place and go back to last place
     private void removePlace() {
@@ -333,94 +310,93 @@ public class SevenInventory {
     }
 
     // MODIFIES: this
-    // EFFECTS: initialize listOfPlaces and scanner
-    private void init() {
-        pathOfPlaces = new LinkedList<>();
-        topLevel = new ListOfObjects();
-        scanner = new Scanner(System.in);
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new ListOfObjectsJsonReader(JSON_STORE);
-    }
-
-//    // EFFECTS: remove extra blank space in the input String
-//    private String normalizeInput(String input) {
-//        return input.replaceAll("\\s+", " ").replaceAll("\\s.", "");
-//    }
-
-
-//    TODO: timeline
-    private void getTimeline() {
-        System.out.println("Important dates in all places: ");
-        System.out.println(topLevel.getEveryTimeline() + "\n");
-    }
-
-    // TODO: find method, if time permits
-//    private void findItem() {
-//        String input;
-//        System.out.println("Enter item name: ");
-//        input = scanner.next();
-//
-//       String result = searchIn(listOfObjects, input);
-//
-//        System.out.println(result);
-//    }
-//
-//    private String searchIn(ListOfObjects loo, String input) {
-//        String itemLocation = "Item path: ";
-//        for (Item item: loo) {
-//            if (item.getName().equals(input)) {
-//                itemLocation += item.getName();
-//                return itemLocation;
-//            }
-//            if (item.getClass().equals(Place.class)) {
-//                if (searchIn(((Place) item).getKeptItems(), input) != "Item not found") {
-//                    itemLocation += item.getName();
-//                    return itemLocation;
-//                }
-//            }
-//        }
-//        return "Item not found.";
-//    }
-
-    // MODIFIES: this
-    // EFFECTS: create a place and add it to currentPlace
-    private void createPlace() {
-        System.out.println("\nName the place: ");
-        System.out.print(">>> ");
-        currentName = scanner.next(); // TODO: normalize string
-
-        askItemInfo();
-        Place place = new Place(currentName, currentImportantDate, currentDegreeOfImportance, currentKeywords);
-        // add place to the current place, and change the current place to the place just created
-        if (currentPlace == null) {
-            topLevel.add(place);
+    // EFFECTS: go back to last place
+    private void goBackToLastPlace() {
+        if (previousPlace == null) {
+            currentPlace = null;
+            pathOfPlaces.clear();
         } else {
-            currentPlace.add(place);
+            currentPlace = previousPlace; // go back to previousPlace from currentPlace
+            previousPlace = pathOfPlaces.pollLast(); // get the previousPlace before the current previousPlace
         }
     }
 
     // MODIFIES: this
-    // EFFECTS: create an item and add it to current listOfObjects
-    private void createItem() {
-        System.out.println("\nName the item: ");
-        System.out.print(">>> ");
-        currentName = scanner.next();    // TODO: normalize string if time permits
+    // EFFECTS: reset fields to go  back to Top Level
+    private void backToTopLevel() {
+        pathOfPlaces.clear();
+        previousPlace = null;
+        currentPlace = null;
+        currentItem = null;
+        // while loop will display the Top Level Menu automatically
+    }
 
-        askItemInfo();
+    // Main methods above
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    // Helper methods below
 
-        Item item = new Item(currentName, currentImportantDate, currentDegreeOfImportance, currentKeywords);
+    // EFFECTS: list items in a place if within a place, list all places if in Top Level
+    private void listItems() {
+        if (currentPlace == null) {
+            System.out.println("\nWe are at Top Level. Select from available places:");
+            System.out.println(topLevel.getCurrentAll().trim());
+        } else {
+            System.out.println("\nWe are in \"" + currentPlace.getName() + "\".");
+            System.out.println("Available objects: \n" + currentPlace.getKeptItems().getCurrentAll().trim());
+        }
+    }
 
-        assert currentPlace != null;
-        currentPlace.add(item);
+    // MODIFIES: this
+    // EFFECTS: set currentPlace if input name is a place, set currentItem if specified an item name
+    private boolean setItem(String input) {
+        if (currentPlace == null) {
+            return false;
+        } else if (currentPlace.getKeptItems().isEmpty()) {
+            System.out.println("Current place is empty, Nothing to access.");
+            return true;
+        }
+        for (Item i: currentPlace.getKeptItems()) {
+            if (input.equals(i.getName())) {
+                if (i.getClass().equals(Place.class)) {
+                    // if we are not in Top Level, we copy the currentPlace to previousPlace and set new currentPlace
+                    if (previousPlace != null) {
+                        pathOfPlaces.add(previousPlace); // add previous place to path
+                    }
+                    previousPlace = currentPlace;
+                    currentPlace = (Place) i;
+                } else {
+                    // if the input item is type Item, simply set currentItem
+                    currentItem = i;
+                    displayItemInfo();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    // EFFECTS: print try again if the name is not matched by any item
+    private void tryAgain() {
+        if (currentPlace == null) {
+            System.out.println("Wrong name, try again: ");
+            System.out.println("Places available: \n" + topLevel.getCurrentAll().trim());
+            System.out.print(">>> ");
+        } else {
+            System.out.println("Wrong name, try again: ");
+            System.out.println("Objects available: \n" + currentPlace.getKeptItems().getCurrentAll().trim());
+            System.out.print(">>> ");
+        }
     }
 
     // MODIFIES: this
     // EFFECTS: ask user the input information of an item
     private void askItemInfo() {
         String input;
-        currentImportantDate = "7777-07-17"; // set default
-        currentDegreeOfImportance = -777;
-        currentKeywords = new ArrayList<>();
+        importantDate = "7777-07-17"; // set default
+        degreeOfImportance = -777;
+        keywords = new ArrayList<>();
 
 
         while (true) {
@@ -462,13 +438,13 @@ public class SevenInventory {
             System.out.print(">>> ");
             input = formatInputDate(scanner.next());
             if (isDateValid(input)) {
-                currentImportantDate = input;
+                importantDate = input;
                 break;
             }
         }
     }
 
-    // EFFECT: format yyyyMMdd to yyyy-MMd-dd, don't format if input is not yyyyMMdd
+    // EFFECT: format yyyyMMdd to yyyy-MM-dd, do nothing if input is not yyyyMMdd
     private String formatInputDate(String input) {
         if (input.matches("\\d{8}")) {
             return input.substring(0, 4) + "-" + input.substring(4, 6)
@@ -499,7 +475,7 @@ public class SevenInventory {
             input = scanner.next();
             if (input.matches("-?\\d+")) {
                 try {
-                    currentDegreeOfImportance = Integer.parseInt(input);
+                    degreeOfImportance = Integer.parseInt(input);
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("Number too large LOL, change one.");
@@ -524,7 +500,45 @@ public class SevenInventory {
                 break;
             }
 
-            currentKeywords.add(input);
+            keywords.add(input);
         }
     }
+
+    // Helper methods above
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+    // TODO: if time permits, finish below
+//    // EFFECTS: remove extra blank space in the input String
+//    private String normalizeInput(String input) {
+//        return input.replaceAll("\\s+", " ").replaceAll("\\s.", "");
+//    }
+
+//    // TODO: find method, if time permits
+//    private void findItem() {
+//        String input;
+//        System.out.println("Enter item name: ");
+//        input = scanner.next();
+//
+//       String result = searchIn(listOfObjects, input);
+//
+//        System.out.println(result);
+//    }
+//
+//    private String searchIn(ListOfObjects loo, String input) {
+//        String itemLocation = "Item path: ";
+//        for (Item item: loo) {
+//            if (item.getName().equals(input)) {
+//                itemLocation += item.getName();
+//                return itemLocation;
+//            }
+//            if (item.getClass().equals(Place.class)) {
+//                if (searchIn(((Place) item).getKeptItems(), input) != "Item not found") {
+//                    itemLocation += item.getName();
+//                    return itemLocation;
+//                }
+//            }
+//        }
+//        return "Item not found.";
+//    }
 }

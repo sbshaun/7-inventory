@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="ui.SevenInventoryGUI">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="17" column-count="13" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="17" left="7" bottom="17" right="7"/>
+    <constraints>
+      <xy x="118" y="217" width="868" height="456"/>
+    </constraints>
+    <properties/>
+    <border type="empty">
+      <size top="0" left="7" bottom="0" right="37"/>
+    </border>
+    <children>
+      <component id="f9b7c" class="javax.swing.JButton" binding="createNewPlaceButton">
+        <constraints>
+          <grid row="5" column="1" row-span="3" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="177" height="77"/>
+            <maximum-size width="177" height="77"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Create a new Place"/>
+        </properties>
+      </component>
+      <vspacer id="39b3a">
+        <constraints>
+          <grid row="1" column="0" row-span="16" col-span="1" vsize-policy="6" hsize-policy="1" anchor="8" fill="2" indent="0" use-parent-layout="false">
+            <preferred-size width="7" height="-1"/>
+            <maximum-size width="7" height="-1"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <hspacer id="47c8e">
+        <constraints>
+          <grid row="16" column="1" row-span="1" col-span="12" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="418f9">
+        <constraints>
+          <grid row="5" column="4" row-span="11" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="9c795">
+        <constraints>
+          <grid row="0" column="12" row-span="16" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="f00d0" class="javax.swing.JButton" binding="createNewItemButton">
+        <constraints>
+          <grid row="9" column="1" row-span="4" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="177" height="77"/>
+            <maximum-size width="177" height="77"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Create a new Item"/>
+        </properties>
+      </component>
+      <hspacer id="2b4b">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="28e3f" class="javax.swing.JLabel" binding="currentPlaceLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="3" col-span="6" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="57" height="17"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Apple LiGothic" size="25" style="0"/>
+          <text value="We  are  at &quot;Top Level&quot;"/>
+        </properties>
+      </component>
+      <hspacer id="bffb7">
+        <constraints>
+          <grid row="13" column="1" row-span="1" col-span="3" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="ca9d3">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="11" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="bec9a">
+        <constraints>
+          <grid row="13" column="5" row-span="1" col-span="6" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="4e20a" class="javax.swing.JButton" binding="accessButton">
+        <constraints>
+          <grid row="14" column="1" row-span="2" col-span="3" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="197" height="37"/>
+            <maximum-size width="197" height="37"/>
+          </grid>
+        </constraints>
+        <properties>
+          <label value="Access a place/item -&gt;"/>
+          <text value="Access a place/item -&gt;"/>
+        </properties>
+      </component>
+      <component id="9cd29" class="javax.swing.JTextField" binding="itemNameTextField">
+        <constraints>
+          <grid row="14" column="5" row-span="2" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="177" height="37"/>
+            <maximum-size width="177" height="37"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1184275"/>
+          <enabled value="true"/>
+          <foreground color="-6842473"/>
+          <text value="   enter place/item name"/>
+        </properties>
+      </component>
+      <component id="c05ac" class="javax.swing.JButton" binding="saveButton">
+        <constraints>
+          <grid row="14" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Save File"/>
+        </properties>
+      </component>
+      <vspacer id="b8f">
+        <constraints>
+          <grid row="5" column="7" row-span="8" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="6bb2a">
+        <constraints>
+          <grid row="14" column="7" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="846bf" class="javax.swing.JButton" binding="deleteButton">
+        <constraints>
+          <grid row="2" column="8" row-span="2" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Delete This Place"/>
+        </properties>
+      </component>
+      <component id="b7456" class="javax.swing.JButton" binding="goBackButton">
+        <constraints>
+          <grid row="1" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Go Back"/>
+        </properties>
+      </component>
+      <component id="92365" class="javax.swing.JLabel" binding="availableItemsLabel">
+        <constraints>
+          <grid row="5" column="5" row-span="5" col-span="2" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <alignmentY value="0.5"/>
+          <text value="Available Places:   "/>
+        </properties>
+      </component>
+      <hspacer id="db6a2">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="10" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <vspacer id="576ee">
+        <constraints>
+          <grid row="1" column="7" row-span="3" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="fe96c" class="javax.swing.JList" binding="availableItemsList">
+        <constraints>
+          <grid row="5" column="8" row-span="8" col-span="3" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="627da" class="javax.swing.JButton" binding="timeLineButton">
+        <constraints>
+          <grid row="10" column="5" row-span="3" col-span="2" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Show All Important Dates"/>
+        </properties>
+      </component>
+      <component id="36b50" class="javax.swing.JButton" binding="loadButton">
+        <constraints>
+          <grid row="14" column="8" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Load File"/>
+        </properties>
+      </component>
+      <component id="3de4d" class="javax.swing.JButton" binding="resetButton">
+        <constraints>
+          <grid row="15" column="8" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Reset File"/>
+        </properties>
+      </component>
+      <component id="653cc" class="javax.swing.JButton" binding="backToTopLevelButton">
+        <constraints>
+          <grid row="1" column="9" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Back To Top Level"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

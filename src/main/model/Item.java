@@ -1,6 +1,6 @@
 package model;
 
-
+import org.apache.commons.text.similarity.LevenshteinDistance;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
@@ -8,6 +8,8 @@ import persistence.Writable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
+
+import static java.lang.Math.max;
 
 // An item with necessary information
 public class Item implements Writable {
@@ -54,8 +56,38 @@ public class Item implements Writable {
         for (String k: keywords) {
             jsonArray.put(k);
         }
-
         return jsonArray;
+    }
+
+    // TODO: not used for now
+    // REQUIRES: !(both string1 and string2 are empty)
+    // EFFECTS: return similarity between the input strings
+    // Reference:
+    // https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/similarity/LevenshteinDistance.html#apply(java.lang.CharSequence,java.lang.CharSequence)
+    // https://medium.com/@saycchai/great-article-but-your-levenshtein-distance-to-percentage-formula-1-levenshtein-distance-is-5cef7b935f69
+    public static float stringSimilarity(String string1, String string2) {
+        LevenshteinDistance levenshteinDistance = new LevenshteinDistance();
+        float distance = levenshteinDistance.apply(string1, string2);
+        return (1 - distance / max(string1.length(), string2.length()));
+    }
+
+    // EFFECTS: compare the string to all strings in keywords and return the highest similarity
+    public float keywordsSimilarity(String string) {
+        if (keywords.isEmpty()) {
+            return 0;
+        }
+
+        float highestSimilarity = 0;
+        float similarity;
+
+        for (String keyword: keywords) {
+            similarity = stringSimilarity(string, keyword);
+            if (similarity > highestSimilarity) {
+                highestSimilarity = similarity;
+            }
+        }
+
+        return highestSimilarity;
     }
 
     // Getters and setters below =======================
