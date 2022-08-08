@@ -6,12 +6,12 @@ import model.Place;
 import persistence.JsonWriter;
 import persistence.ListOfObjectsJsonReader;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
+import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -61,8 +61,9 @@ public class SevenInventoryGUI extends JFrame {
     // TODO: Display a picture
     // TODO: Display a picture
     // TODO: Display a picture
-    public SevenInventoryGUI() {
+    public SevenInventoryGUI() throws IOException {
         startApp();
+        showImage();
         setupFrame();
         init();
         loadSevenInventory();
@@ -76,6 +77,14 @@ public class SevenInventoryGUI extends JFrame {
             input = JOptionPane.showInputDialog("Enter \"I like the project to start\"");
         } while (!input.toLowerCase().replaceAll("\\s+", "").matches("ilike.*"));
 
+    }
+
+    // MODIFIES: this
+    // EFFECTS:
+    private void showImage() throws IOException {
+        BufferedImage image = ImageIO.read(new File("data/icons8-sheep-100.png"));
+        JLabel picLabel = new JLabel(new ImageIcon(image));
+        JOptionPane.showMessageDialog(null, picLabel, "display a picture", JOptionPane.PLAIN_MESSAGE, null);
     }
 
     // MODIFIES: this
@@ -117,6 +126,7 @@ public class SevenInventoryGUI extends JFrame {
         setupButtons();
         displayAvailablePlaces(); // display places in topLevel
         setupItemNameTextField();
+        configureAvailableItemsList();
     }
 
     // MODIFIES: this
@@ -168,6 +178,10 @@ public class SevenInventoryGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 name = JOptionPane.showInputDialog("Enter name of the item: ");
+                while (name.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Invalid name", "Invalid name", JOptionPane.ERROR_MESSAGE);
+                    name = JOptionPane.showInputDialog("Enter name of the item: ");
+                }
                 askImportantDate();
                 askDegreeOfImportance();
                 askKeywords();
@@ -200,6 +214,20 @@ public class SevenInventoryGUI extends JFrame {
                 access(name);
                 itemNameTextField.setText("   Enter the place/item name");
                 frame.requestFocusInWindow();
+            }
+        });
+    }
+
+    // MODIFIES: this
+    // EFFECTS: access a place/item when double click
+    private void configureAvailableItemsList() {
+        availableItemsList.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+                if ((evt.getClickCount() == 2) || (evt.getClickCount() == 3)) {
+                    // Double-click detected
+                    name = (String) availableItemsList.getSelectedValue();
+                    access(name);
+                }
             }
         });
     }
@@ -246,7 +274,8 @@ public class SevenInventoryGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JDialog.setDefaultLookAndFeelDecorated(true);
 
-                String confirmString = "Confirm: Load the file from last time, \n       you may lost all changes.";
+                String confirmString = "Confirm: Load the file from last time, "
+                        + "\n       you may lost all unsaved changes.";
 
                 int response = JOptionPane.showConfirmDialog(null, confirmString, "Load File Confirmation",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -271,7 +300,7 @@ public class SevenInventoryGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 JDialog.setDefaultLookAndFeelDecorated(true);
 
-                String confirmString = "Confirm: reset the file to empty, \n       you'll lost all saved data.";
+                String confirmString = "Confirm: reset the file to empty, \n       you'll lost all unsaved data.";
 
                 int response = JOptionPane.showConfirmDialog(null, confirmString, "Reset File Confirmation",
                         JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -279,8 +308,8 @@ public class SevenInventoryGUI extends JFrame {
                     JOptionPane.showMessageDialog(null, "File is not reset.");
                 } else if (response == JOptionPane.YES_OPTION) {
                     topLevel.clear();
-                    JOptionPane.showMessageDialog(null, "File reset, you can still restore "
-                            + "from last time by clicking \"Load File\"");
+                    JOptionPane.showMessageDialog(null, "File is reset, you can still restore "
+                            + "the data from last time by clicking \"Load File\"");
                     displayTopLevelPanel();
                 } else if (response == JOptionPane.CLOSED_OPTION) {
                     JOptionPane.showMessageDialog(null, "File is not reset.");
@@ -347,7 +376,8 @@ public class SevenInventoryGUI extends JFrame {
                 if (name.equals(i.getName())) {
                     currentPlace = (Place) i;
                     updatePlacePanel();
-                    JOptionPane.showMessageDialog(null, "You accessed place: \"" + name + "\"");
+                    displayPlaceInfoWindow(currentPlace);
+                    // JOptionPane.showMessageDialog(null, "You accessed place: \"" + name + "\"");
                     return;
                 }
             }
@@ -375,7 +405,9 @@ public class SevenInventoryGUI extends JFrame {
                     previousPlace = currentPlace;
                     currentPlace = (Place) i;
                     updatePlacePanel();
-                    JOptionPane.showMessageDialog(null, "You accessed: \"" + name + "\"");
+                    displayPlaceInfoWindow(currentPlace);
+                    //
+                    // JOptionPane.showMessageDialog(null, "You accessed: \"" + name + "\"");
                 } else {
                     // if the input item is type Item, simply set currentItem
                     displayItemInfoWindow(i);
@@ -388,24 +420,35 @@ public class SevenInventoryGUI extends JFrame {
 
     // MODIFIES: this
     // EFFECTS: pop up a window display item info and option to delete
+    private void displayPlaceInfoWindow(Place place) {
+        String info = getItemInfoString(place);
+        JOptionPane.showMessageDialog(null, info);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: pop up a window display item info and option to delete
     private void displayItemInfoWindow(Item i) {
         JDialog.setDefaultLookAndFeelDecorated(true);
 
 
-        String info = getItemInfoString(i) + "\n Do you want to delete the item?";
+        String info = getItemInfoString(i) + "\n\nDo you want to delete the item?";
 
         int response = JOptionPane.showConfirmDialog(null, info, i.getName() + " Information",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (response == JOptionPane.NO_OPTION) {
-            JOptionPane.showMessageDialog(null, "We are back to: \"" + currentPlace.getName() + "\"");
-        } else if (response == JOptionPane.YES_OPTION) {
+//        if (response == JOptionPane.NO_OPTION) {
+//            // Do nothing
+//            // JOptionPane.showMessageDialog(null, "We are back to: \"" + currentPlace.getName() + "\"");
+//        } else
+        if (response == JOptionPane.YES_OPTION) {
             String deleted = i.getName();
             currentPlace.remove(i);
             updatePlacePanel();
             JOptionPane.showMessageDialog(null, "You deleted: \"" + deleted + "\"");
-        } else if (response == JOptionPane.CLOSED_OPTION) {
-            JOptionPane.showMessageDialog(null, "We are back to: \"" + currentPlace.getName() + "\"");
         }
+//        else if (response == JOptionPane.CLOSED_OPTION) {
+//            // Do nothing
+//            // JOptionPane.showMessageDialog(null, "We are back to: \"" + currentPlace.getName() + "\"");
+//        }
     }
 
     // EFFECTS: return info of an item as a String
@@ -414,7 +457,9 @@ public class SevenInventoryGUI extends JFrame {
         String impDate = item.getImportantDate();
         int doi = item.getDegreeOfImportance();
         String createdDate = item.getCreatedDate().toString();
+        ArrayList<String> keywords = item.getKeywords();
         String itemInfo = "Item: " + name;
+        itemInfo += "\nCreated on: " + createdDate;
 
         if (!impDate.equals("7777-07-17")) {
             itemInfo += "\nImportant date: " + impDate;
@@ -422,9 +467,20 @@ public class SevenInventoryGUI extends JFrame {
         if (doi != -777) {
             itemInfo += "\nDegree of importance: " + doi;
         }
-        itemInfo += "\n Created on: " + createdDate;
+        if (!keywords.isEmpty()) {
+            itemInfo += "\nKeywords: " + concatKeywords(keywords);
+        }
 
         return itemInfo;
+    }
+
+    // EFFECTS: concatenate all keywords and return a String
+    private String concatKeywords(ArrayList<String> keywords) {
+        String keys = "";
+        for  (String keyword: keywords) {
+            keys += keyword + ", ";
+        }
+        return keys.substring(0, keys.length() - 2) + ".";
     }
 
     // MODIFIES: this
@@ -472,6 +528,9 @@ public class SevenInventoryGUI extends JFrame {
     /// MODIFIES: this
     // EFFECTS: delete current place and go back to last place
     private void deletePlace() {
+        if (currentPlace == null) {
+            JOptionPane.showMessageDialog(null, "We are at \"Top Level\", to delete a place, first access it.");
+        }
         String deleted = currentPlace.getName();
         if (previousPlace == null) {
             // when we are at a place of Top Level
@@ -501,8 +560,7 @@ public class SevenInventoryGUI extends JFrame {
         createNewItemButton.setVisible(false);
         timeLineButton.setVisible(true);
         currentPlaceLabel.setText("We are at \"Top Level\"");
-        JOptionPane.showMessageDialog(null, "We are back to: \"Top Level\"");
-        // Do this for now, change this later
+        // JOptionPane.showMessageDialog(null, "We are back to: \"Top Level\"");
     }
 
     // MODIFIES: this
@@ -514,7 +572,7 @@ public class SevenInventoryGUI extends JFrame {
             currentPlace = previousPlace; // go back to previousPlace from currentPlace
             previousPlace = pathOfPlaces.pollLast(); // get the previousPlace before the current previousPlace
             updatePlacePanel();
-            JOptionPane.showMessageDialog(null, "We are back to: \"" + currentPlace.getName() + "\"");
+            // JOptionPane.showMessageDialog(null, "We are back to: \"" + currentPlace.getName() + "\"");
         }
     }
 

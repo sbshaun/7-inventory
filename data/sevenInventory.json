@@ -1,207 +1,231 @@
-{"topLevel": [
-    {
-        "createdDate": "2022-08-07",
-        "keywords": [],
-        "name": "p1",
-        "degreeOfImportance": -777,
-        "keptItems": [
-            {
-                "createdDate": "2022-08-07",
-                "keywords": [],
-                "name": "p222",
-                "degreeOfImportance": -777,
-                "keptItems": [
-                    {
-                        "createdDate": "2022-08-07",
-                        "keywords": [],
-                        "name": "p3",
-                        "degreeOfImportance": -777,
-                        "keptItems": [
-                            {
-                                "createdDate": "2022-08-07",
-                                "keywords": [],
-                                "name": "p56",
-                                "degreeOfImportance": -777,
-                                "keptItems": [],
-                                "importantDate": "2087-07-07"
-                            },
-                            {
-                                "createdDate": "2022-08-07",
-                                "keywords": [],
-                                "name": "i",
-                                "degreeOfImportance": -777,
-                                "importantDate": "7777-07-17"
-                            },
-                            {
-                                "createdDate": "2022-08-07",
-                                "keywords": [],
-                                "name": "i2",
-                                "degreeOfImportance": -777,
-                                "importantDate": "7777-07-17"
-                            },
-                            {
-                                "createdDate": "2022-08-07",
-                                "keywords": [],
-                                "name": "i4",
-                                "degreeOfImportance": -777,
-                                "importantDate": "7777-07-17"
-                            },
-                            {
-                                "createdDate": "2022-08-07",
-                                "keywords": [],
-                                "name": "p4",
-                                "degreeOfImportance": -777,
-                                "keptItems": [],
-                                "importantDate": "7777-07-17"
-                            },
-                            {
-                                "createdDate": "2022-08-07",
-                                "keywords": [],
-                                "name": "p555",
-                                "degreeOfImportance": -777,
-                                "keptItems": [],
-                                "importantDate": "7777-07-17"
-                            }
-                        ],
-                        "importantDate": "2080-09-09"
-                    },
-                    {
-                        "createdDate": "2022-08-07",
-                        "keywords": [],
-                        "name": "i3",
-                        "degreeOfImportance": -777,
-                        "importantDate": "2090-10-10"
-                    },
-                    {
-                        "createdDate": "2022-08-07",
-                        "keywords": [],
-                        "name": "p333",
-                        "degreeOfImportance": -777,
-                        "keptItems": [],
-                        "importantDate": "7777-07-17"
-                    },
-                    {
-                        "createdDate": "2022-08-07",
-                        "keywords": [],
-                        "name": "p33313",
-                        "degreeOfImportance": -777,
-                        "keptItems": [],
-                        "importantDate": "7777-07-17"
-                    },
-                    {
-                        "createdDate": "2022-08-07",
-                        "keywords": [],
-                        "name": "p33",
-                        "degreeOfImportance": -777,
-                        "keptItems": [],
-                        "importantDate": "7777-07-17"
-                    }
-                ],
-                "importantDate": "2009-09-09"
-            },
-            {
-                "createdDate": "2022-08-07",
-                "keywords": [],
-                "name": "i22",
-                "degreeOfImportance": -777,
-                "importantDate": "2010-09-09"
-            }
-        ],
-        "importantDate": "1111-01-01"
-    },
-    {
-        "createdDate": "2022-08-07",
-        "keywords": [],
-        "name": "p111",
-        "degreeOfImportance": -777,
-        "keptItems": [
-            {
-                "createdDate": "2022-08-07",
-                "keywords": [],
-                "name": "p2",
-                "degreeOfImportance": -777,
-                "keptItems": [{
-                    "createdDate": "2022-08-07",
-                    "keywords": [],
-                    "name": "p333",
+{"topLevel": [{
+    "createdDate": "2022-08-08",
+    "keywords": [
+        "brand 511",
+        "yellow",
+        "big"
+    ],
+    "name": "pubg bag",
+    "degreeOfImportance": 777,
+    "keptItems": [
+        {
+            "createdDate": "2022-08-08",
+            "keywords": ["top left"],
+            "name": "small bag1",
+            "degreeOfImportance": -777,
+            "keptItems": [
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": ["tissue"],
+                    "name": "paper towel",
                     "degreeOfImportance": -777,
+                    "importantDate": "7777-07-17"
+                },
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": [
+                        "poker",
+                        "sticker"
+                    ],
+                    "name": "sticker",
+                    "degreeOfImportance": -777,
+                    "importantDate": "7777-07-17"
+                },
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": [
+                        "fun",
+                        "poker",
+                        "play",
+                        "playing cards"
+                    ],
+                    "name": "poker",
+                    "degreeOfImportance": -777,
+                    "importantDate": "7777-07-17"
+                }
+            ],
+            "importantDate": "7777-07-17"
+        },
+        {
+            "createdDate": "2022-08-08",
+            "keywords": ["topright"],
+            "name": "small bag2",
+            "degreeOfImportance": -777,
+            "keptItems": [{
+                "createdDate": "2022-08-08",
+                "keywords": [
+                    "iphone",
+                    "wire",
+                    "white"
+                ],
+                "name": "earphone",
+                "degreeOfImportance": -777,
+                "importantDate": "7777-07-17"
+            }],
+            "importantDate": "7777-07-17"
+        },
+        {
+            "createdDate": "2022-08-08",
+            "keywords": ["top"],
+            "name": "small bag3",
+            "degreeOfImportance": -777,
+            "keptItems": [
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": [
+                        "ubc card",
+                        "ubc",
+                        "id",
+                        "msp",
+                        "bank card",
+                        "credit card"
+                    ],
+                    "name": "cards",
+                    "degreeOfImportance": 777,
+                    "keptItems": [],
+                    "importantDate": "7777-07-17"
+                },
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": ["visa"],
+                    "name": "bank card",
+                    "degreeOfImportance": -777,
+                    "importantDate": "7777-07-17"
+                },
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": [
+                        "home",
+                        "keys"
+                    ],
+                    "name": "keys",
+                    "degreeOfImportance": -777,
+                    "importantDate": "7777-07-17"
+                },
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": [
+                        "airpods",
+                        "earphones"
+                    ],
+                    "name": "airpods pro",
+                    "degreeOfImportance": -777,
+                    "importantDate": "7777-07-17"
+                }
+            ],
+            "importantDate": "7777-07-17"
+        },
+        {
+            "createdDate": "2022-08-08",
+            "keywords": ["front"],
+            "name": "middle bag1",
+            "degreeOfImportance": -777,
+            "keptItems": [{
+                "createdDate": "2022-08-08",
+                "keywords": [],
+                "name": "wet wotel",
+                "degreeOfImportance": -777,
+                "importantDate": "7777-07-17"
+            }],
+            "importantDate": "7777-07-17"
+        },
+        {
+            "createdDate": "2022-08-08",
+            "keywords": ["back"],
+            "name": "middle bag2",
+            "degreeOfImportance": -777,
+            "keptItems": [],
+            "importantDate": "7777-07-17"
+        },
+        {
+            "createdDate": "2022-08-08",
+            "keywords": ["left"],
+            "name": "side bag1",
+            "degreeOfImportance": -777,
+            "keptItems": [{
+                "createdDate": "2022-08-08",
+                "keywords": [],
+                "name": "drink",
+                "degreeOfImportance": -777,
+                "importantDate": "2022-08-17"
+            }],
+            "importantDate": "7777-07-17"
+        },
+        {
+            "createdDate": "2022-08-08",
+            "keywords": ["right"],
+            "name": "side bag2",
+            "degreeOfImportance": -777,
+            "keptItems": [{
+                "createdDate": "2022-08-08",
+                "keywords": [
+                    "sun",
+                    "skin"
+                ],
+                "name": "sun screen",
+                "degreeOfImportance": 7,
+                "importantDate": "2023-01-07"
+            }],
+            "importantDate": "7777-07-17"
+        },
+        {
+            "createdDate": "2022-08-08",
+            "keywords": ["big"],
+            "name": "main bag",
+            "degreeOfImportance": -777,
+            "keptItems": [
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": [],
+                    "name": "mac",
+                    "degreeOfImportance": -777,
+                    "importantDate": "7777-07-17"
+                },
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": [
+                        "macbook",
+                        "macbook pro",
+                        "mac",
+                        "apple"
+                    ],
+                    "name": "laptop",
+                    "degreeOfImportance": 777,
+                    "importantDate": "2023-07-07"
+                },
+                {
+                    "createdDate": "2022-08-08",
+                    "keywords": [
+                        "yellow",
+                        "small"
+                    ],
+                    "name": "tiny bag",
+                    "degreeOfImportance": 17,
                     "keptItems": [
                         {
-                            "createdDate": "2022-08-07",
-                            "keywords": [],
-                            "name": "i4444",
+                            "createdDate": "2022-08-08",
+                            "keywords": [
+                                "mac",
+                                "macbook",
+                                "iphone"
+                            ],
+                            "name": "charger",
                             "degreeOfImportance": -777,
                             "importantDate": "7777-07-17"
                         },
                         {
-                            "createdDate": "2022-08-07",
+                            "createdDate": "2022-08-08",
                             "keywords": [],
-                            "name": "i5555",
+                            "name": "wires",
                             "degreeOfImportance": -777,
-                            "keptItems": [],
-                            "importantDate": "7777-07-17"
-                        },
-                        {
-                            "createdDate": "2022-08-07",
-                            "keywords": [],
-                            "name": "p312",
-                            "degreeOfImportance": -777,
-                            "keptItems": [{
-                                "createdDate": "2022-08-07",
-                                "keywords": [],
-                                "name": "i7",
-                                "degreeOfImportance": -777,
-                                "keptItems": [],
-                                "importantDate": "2079-09-09"
-                            }],
-                            "importantDate": "7777-07-17"
-                        },
-                        {
-                            "createdDate": "2022-08-07",
-                            "keywords": [],
-                            "name": "p31331",
-                            "degreeOfImportance": -777,
-                            "keptItems": [],
                             "importantDate": "7777-07-17"
                         }
                     ],
                     "importantDate": "7777-07-17"
-                }],
-                "importantDate": "9999-09-09"
-            },
-            {
-                "createdDate": "2022-08-07",
-                "keywords": [],
-                "name": "p23",
-                "degreeOfImportance": -777,
-                "keptItems": [],
-                "importantDate": "7777-07-17"
-            },
-            {
-                "createdDate": "2022-08-07",
-                "keywords": [],
-                "name": "p222",
-                "degreeOfImportance": -777,
-                "keptItems": [],
-                "importantDate": "7777-07-17"
-            },
-            {
-                "createdDate": "2022-08-07",
-                "keywords": [],
-                "name": "p444",
-                "degreeOfImportance": -777,
-                "keptItems": [],
-                "importantDate": "7777-07-17"
-            }
-        ],
-        "importantDate": "1111-02-02"
-    },
-    {
-        "createdDate": "2022-08-07",
-        "keywords": [],
-        "name": "p11111",
-        "degreeOfImportance": -777,
-        "keptItems": [],
-        "importantDate": "2001-01-01"
-    }
-]}
+                }
+            ],
+            "importantDate": "7777-07-17"
+        }
+    ],
+    "importantDate": "2018-07-17"
+}]}
