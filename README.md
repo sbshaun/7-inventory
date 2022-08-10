@@ -169,12 +169,28 @@ As a user, I want to be able to
 
 ---
 
-# Instructions for Grader
+### Instructions for Grader
 
 - You can generate the first required event by clicking `Create a new Place` button
 - You can generate the second required event by clicking  `Show  All Important Dates` button
 - You can locate my visual component at the start of the app
 - You can save the state of my application by clicking `Save File` button
 - You can reload the state of my application by `Load File` button
+
+---
+### Phase 4
+
+**Sample:**
+```
+Event log cleared.
+Added item-"create a place  to delete" to place-"place7 aug 9".
+Added item-"item to  delete" to place-"create a place  to delete".
+Added item-"another place" to place-"create a place  to delete".
+Displayed timeline.
+Deleted item-"another place" from place-"create a place  to delete".
+Deleted item-"create a place  to delete" from place-"place7 aug 9".
+Added item-"item1" to place-"place7 aug 9".
+Deleted item-"item1" from place-"place7 aug 9".
+```
 
 ---

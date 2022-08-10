@@ -12,6 +12,18 @@ public class ListOfObjects extends ArrayList<Item> implements Writable {
 
     // Methods below ========================
 
+
+    // Wrong, discard.
+    // REQUIRES: item.getClass()  == Place.class
+     // MODIFIES: this
+    // EFFECTS: log add event
+//    @Override
+//    public boolean add(Item item) {
+//        EventLog.getInstance().logEvent(new Event("New place-\"" + item.getName() + "\""
+//                + "is added to-\"Top Level\"."));
+//        return  super.add(item);
+//    }
+
     // EFFECTS: return items kept in the current place, not going into items
     public String getCurrentAll() {
         if (this.isEmpty()) {
@@ -74,6 +86,8 @@ public class ListOfObjects extends ArrayList<Item> implements Writable {
                 timeline.append(impDate);
             }
         }
+
+        EventLog.getInstance().logEvent(new Event("Displayed timeline."));
 
         return timeline.toString();
     }

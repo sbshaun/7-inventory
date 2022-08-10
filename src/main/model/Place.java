@@ -32,12 +32,18 @@ public class Place extends Item implements Writable {
     // EFFECTS: add an item to keptItems
     public void add(Item item) {
         keptItems.add(item);
+
+        EventLog.getInstance().logEvent(new Event("Added item-\"" + item.getName() + "\""
+                + " to place-\"" + this.getName() + "\"."));
     }
 
     // MODIFIES: this
     // EFFECTS: remove an item from keptItems
     public void remove(Item item) {
         keptItems.remove(item);
+
+        EventLog.getInstance().logEvent(new Event("Deleted item-\"" + item.getName() + "\""
+                + " from place-\"" + this.getName() + "\"."));
     }
 
     // TODO: not used for now

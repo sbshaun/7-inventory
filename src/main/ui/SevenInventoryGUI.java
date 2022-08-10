@@ -1,8 +1,7 @@
 package ui;
 
-import model.Item;
-import model.ListOfObjects;
-import model.Place;
+import model.*;
+import model.Event;
 import persistence.JsonWriter;
 import persistence.ListOfObjectsJsonReader;
 
@@ -68,6 +67,7 @@ public class SevenInventoryGUI extends JFrame {
         init();
         loadSevenInventory();
         initMainPanel();
+        EventLog.getInstance().clear();
     }
 
     // EFFECTS: validate it to start the application
@@ -98,6 +98,7 @@ public class SevenInventoryGUI extends JFrame {
         // Do operation when exit
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent e) {
+                printLog();
                 saveSevenInventory();
                 System.exit(0);
             }
@@ -107,6 +108,13 @@ public class SevenInventoryGUI extends JFrame {
         frame.pack();
         frame.setLocationRelativeTo(null); // display the frame to center position of a screen
         frame.setVisible(true);
+    }
+
+    // EFFECTS: print out logged events on console
+    private void printLog() {
+        for (Event event : EventLog.getInstance()) {
+            System.out.println(event.getDescription());
+        }
     }
 
     // MODIFIES: this
@@ -530,6 +538,7 @@ public class SevenInventoryGUI extends JFrame {
     private void deletePlace() {
         if (currentPlace == null) {
             JOptionPane.showMessageDialog(null, "We are at \"Top Level\", to delete a place, first access it.");
+            return;
         }
         String deleted = currentPlace.getName();
         if (previousPlace == null) {
@@ -540,7 +549,7 @@ public class SevenInventoryGUI extends JFrame {
         } else {
             // when we are in a place inside some other place
             try {
-                previousPlace.getKeptItems().remove(currentPlace);
+                previousPlace.remove(currentPlace);
                 JOptionPane.showMessageDialog(null, "You deleted: \"" + deleted + "\"");
                 goBackToLastPlace();
                 // make previousPlace to placePath, ArrayList<Place>, keeping track of Place accessed,

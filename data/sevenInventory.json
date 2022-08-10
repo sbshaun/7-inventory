@@ -1,231 +1,423 @@
-{"topLevel": [{
-    "createdDate": "2022-08-08",
-    "keywords": [
-        "brand 511",
-        "yellow",
-        "big"
-    ],
-    "name": "pubg bag",
-    "degreeOfImportance": 777,
-    "keptItems": [
-        {
-            "createdDate": "2022-08-08",
-            "keywords": ["top left"],
-            "name": "small bag1",
-            "degreeOfImportance": -777,
-            "keptItems": [
-                {
-                    "createdDate": "2022-08-08",
-                    "keywords": ["tissue"],
-                    "name": "paper towel",
-                    "degreeOfImportance": -777,
-                    "importantDate": "7777-07-17"
-                },
-                {
-                    "createdDate": "2022-08-08",
-                    "keywords": [
-                        "poker",
-                        "sticker"
-                    ],
-                    "name": "sticker",
-                    "degreeOfImportance": -777,
-                    "importantDate": "7777-07-17"
-                },
-                {
-                    "createdDate": "2022-08-08",
-                    "keywords": [
-                        "fun",
-                        "poker",
-                        "play",
-                        "playing cards"
-                    ],
-                    "name": "poker",
-                    "degreeOfImportance": -777,
-                    "importantDate": "7777-07-17"
-                }
-            ],
-            "importantDate": "7777-07-17"
-        },
-        {
-            "createdDate": "2022-08-08",
-            "keywords": ["topright"],
-            "name": "small bag2",
-            "degreeOfImportance": -777,
-            "keptItems": [{
+{"topLevel": [
+    {
+        "createdDate": "2022-08-08",
+        "keywords": [
+            "brand 511",
+            "yellow",
+            "big"
+        ],
+        "name": "pubg bag",
+        "degreeOfImportance": 777,
+        "keptItems": [
+            {
                 "createdDate": "2022-08-08",
-                "keywords": [
-                    "iphone",
-                    "wire",
-                    "white"
+                "keywords": ["top left"],
+                "name": "small bag1",
+                "degreeOfImportance": -777,
+                "keptItems": [
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": ["tissue"],
+                        "name": "paper towel",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    },
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": [
+                            "poker",
+                            "sticker"
+                        ],
+                        "name": "sticker",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    },
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": [
+                            "fun",
+                            "poker",
+                            "play",
+                            "playing cards"
+                        ],
+                        "name": "poker",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    }
                 ],
-                "name": "earphone",
-                "degreeOfImportance": -777,
                 "importantDate": "7777-07-17"
-            }],
-            "importantDate": "7777-07-17"
-        },
-        {
-            "createdDate": "2022-08-08",
-            "keywords": ["top"],
-            "name": "small bag3",
-            "degreeOfImportance": -777,
-            "keptItems": [
-                {
-                    "createdDate": "2022-08-08",
-                    "keywords": [
-                        "ubc card",
-                        "ubc",
-                        "id",
-                        "msp",
-                        "bank card",
-                        "credit card"
-                    ],
-                    "name": "cards",
-                    "degreeOfImportance": 777,
-                    "keptItems": [],
-                    "importantDate": "7777-07-17"
-                },
-                {
-                    "createdDate": "2022-08-08",
-                    "keywords": ["visa"],
-                    "name": "bank card",
-                    "degreeOfImportance": -777,
-                    "importantDate": "7777-07-17"
-                },
-                {
-                    "createdDate": "2022-08-08",
-                    "keywords": [
-                        "home",
-                        "keys"
-                    ],
-                    "name": "keys",
-                    "degreeOfImportance": -777,
-                    "importantDate": "7777-07-17"
-                },
-                {
-                    "createdDate": "2022-08-08",
-                    "keywords": [
-                        "airpods",
-                        "earphones"
-                    ],
-                    "name": "airpods pro",
-                    "degreeOfImportance": -777,
-                    "importantDate": "7777-07-17"
-                }
-            ],
-            "importantDate": "7777-07-17"
-        },
-        {
-            "createdDate": "2022-08-08",
-            "keywords": ["front"],
-            "name": "middle bag1",
-            "degreeOfImportance": -777,
-            "keptItems": [{
+            },
+            {
                 "createdDate": "2022-08-08",
-                "keywords": [],
-                "name": "wet wotel",
+                "keywords": ["topright"],
+                "name": "small bag2",
                 "degreeOfImportance": -777,
+                "keptItems": [{
+                    "createdDate": "2022-08-08",
+                    "keywords": [
+                        "iphone",
+                        "wire",
+                        "white"
+                    ],
+                    "name": "earphone",
+                    "degreeOfImportance": -777,
+                    "importantDate": "7777-07-17"
+                }],
                 "importantDate": "7777-07-17"
-            }],
-            "importantDate": "7777-07-17"
-        },
-        {
-            "createdDate": "2022-08-08",
-            "keywords": ["back"],
-            "name": "middle bag2",
-            "degreeOfImportance": -777,
-            "keptItems": [],
-            "importantDate": "7777-07-17"
-        },
-        {
-            "createdDate": "2022-08-08",
-            "keywords": ["left"],
-            "name": "side bag1",
-            "degreeOfImportance": -777,
-            "keptItems": [{
+            },
+            {
                 "createdDate": "2022-08-08",
-                "keywords": [],
-                "name": "drink",
+                "keywords": ["top"],
+                "name": "small bag3",
                 "degreeOfImportance": -777,
-                "importantDate": "2022-08-17"
-            }],
-            "importantDate": "7777-07-17"
-        },
-        {
-            "createdDate": "2022-08-08",
-            "keywords": ["right"],
-            "name": "side bag2",
-            "degreeOfImportance": -777,
-            "keptItems": [{
-                "createdDate": "2022-08-08",
-                "keywords": [
-                    "sun",
-                    "skin"
+                "keptItems": [
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": [
+                            "ubc card",
+                            "ubc",
+                            "id",
+                            "msp",
+                            "bank card",
+                            "credit card"
+                        ],
+                        "name": "cards",
+                        "degreeOfImportance": 777,
+                        "keptItems": [],
+                        "importantDate": "7777-07-17"
+                    },
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": ["visa"],
+                        "name": "bank card",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    },
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": [
+                            "home",
+                            "keys"
+                        ],
+                        "name": "keys",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    },
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": [
+                            "airpods",
+                            "earphones"
+                        ],
+                        "name": "airpods pro",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    }
                 ],
-                "name": "sun screen",
-                "degreeOfImportance": 7,
-                "importantDate": "2023-01-07"
-            }],
-            "importantDate": "7777-07-17"
-        },
-        {
-            "createdDate": "2022-08-08",
-            "keywords": ["big"],
-            "name": "main bag",
-            "degreeOfImportance": -777,
-            "keptItems": [
-                {
+                "importantDate": "7777-07-17"
+            },
+            {
+                "createdDate": "2022-08-08",
+                "keywords": ["front"],
+                "name": "middle bag1",
+                "degreeOfImportance": -777,
+                "keptItems": [{
                     "createdDate": "2022-08-08",
                     "keywords": [],
-                    "name": "mac",
+                    "name": "wet wotel",
                     "degreeOfImportance": -777,
                     "importantDate": "7777-07-17"
-                },
-                {
+                }],
+                "importantDate": "7777-07-17"
+            },
+            {
+                "createdDate": "2022-08-08",
+                "keywords": ["back"],
+                "name": "middle bag2",
+                "degreeOfImportance": -777,
+                "keptItems": [],
+                "importantDate": "7777-07-17"
+            },
+            {
+                "createdDate": "2022-08-08",
+                "keywords": ["left"],
+                "name": "side bag1",
+                "degreeOfImportance": -777,
+                "keptItems": [{
+                    "createdDate": "2022-08-08",
+                    "keywords": [],
+                    "name": "drink",
+                    "degreeOfImportance": -777,
+                    "importantDate": "2022-08-17"
+                }],
+                "importantDate": "7777-07-17"
+            },
+            {
+                "createdDate": "2022-08-08",
+                "keywords": ["right"],
+                "name": "side bag2",
+                "degreeOfImportance": -777,
+                "keptItems": [{
                     "createdDate": "2022-08-08",
                     "keywords": [
-                        "macbook",
-                        "macbook pro",
-                        "mac",
-                        "apple"
+                        "sun",
+                        "skin"
                     ],
-                    "name": "laptop",
-                    "degreeOfImportance": 777,
-                    "importantDate": "2023-07-07"
-                },
-                {
-                    "createdDate": "2022-08-08",
-                    "keywords": [
-                        "yellow",
-                        "small"
-                    ],
-                    "name": "tiny bag",
-                    "degreeOfImportance": 17,
-                    "keptItems": [
-                        {
-                            "createdDate": "2022-08-08",
-                            "keywords": [
-                                "mac",
-                                "macbook",
-                                "iphone"
-                            ],
-                            "name": "charger",
-                            "degreeOfImportance": -777,
-                            "importantDate": "7777-07-17"
-                        },
-                        {
-                            "createdDate": "2022-08-08",
-                            "keywords": [],
-                            "name": "wires",
-                            "degreeOfImportance": -777,
-                            "importantDate": "7777-07-17"
-                        }
-                    ],
+                    "name": "sun screen",
+                    "degreeOfImportance": 7,
+                    "importantDate": "2023-01-07"
+                }],
+                "importantDate": "7777-07-17"
+            },
+            {
+                "createdDate": "2022-08-08",
+                "keywords": ["big"],
+                "name": "main bag",
+                "degreeOfImportance": -777,
+                "keptItems": [
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": [],
+                        "name": "mac",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    },
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": [
+                            "macbook",
+                            "macbook pro",
+                            "mac",
+                            "apple"
+                        ],
+                        "name": "laptop",
+                        "degreeOfImportance": 777,
+                        "importantDate": "2023-07-07"
+                    },
+                    {
+                        "createdDate": "2022-08-08",
+                        "keywords": [
+                            "yellow",
+                            "small"
+                        ],
+                        "name": "tiny bag",
+                        "degreeOfImportance": 17,
+                        "keptItems": [
+                            {
+                                "createdDate": "2022-08-08",
+                                "keywords": [
+                                    "mac",
+                                    "macbook",
+                                    "iphone"
+                                ],
+                                "name": "charger",
+                                "degreeOfImportance": -777,
+                                "importantDate": "7777-07-17"
+                            },
+                            {
+                                "createdDate": "2022-08-08",
+                                "keywords": [],
+                                "name": "wires",
+                                "degreeOfImportance": -777,
+                                "importantDate": "7777-07-17"
+                            }
+                        ],
+                        "importantDate": "7777-07-17"
+                    }
+                ],
+                "importantDate": "7777-07-17"
+            }
+        ],
+        "importantDate": "2018-07-17"
+    },
+    {
+        "createdDate": "2022-08-09",
+        "keywords": [
+            "blue",
+            "supreme",
+            "2020"
+        ],
+        "name": "blue backpack",
+        "degreeOfImportance": 377,
+        "keptItems": [],
+        "importantDate": "7777-07-17"
+    },
+    {
+        "createdDate": "2022-08-09",
+        "keywords": [
+            "herschel",
+            "rainbow",
+            "colorful"
+        ],
+        "name": "herschel backpack",
+        "degreeOfImportance": 277,
+        "keptItems": [],
+        "importantDate": "7777-07-17"
+    },
+    {
+        "createdDate": "2022-08-09",
+        "keywords": [],
+        "name": "place5",
+        "degreeOfImportance": 9,
+        "keptItems": [
+            {
+                "createdDate": "2022-08-09",
+                "keywords": [
+                    "aug9",
+                    "chicken",
+                    "nonsense",
+                    "yes"
+                ],
+                "name": "place2",
+                "degreeOfImportance": 3,
+                "keptItems": [],
+                "importantDate": "7777-07-17"
+            },
+            {
+                "createdDate": "2022-08-09",
+                "keywords": [
+                    "some item",
+                    "idk",
+                    "cool"
+                ],
+                "name": "item3",
+                "degreeOfImportance": 7,
+                "importantDate": "2097-07-17"
+            }
+        ],
+        "importantDate": "2017-07-17"
+    },
+    {
+        "createdDate": "2022-08-09",
+        "keywords": [
+            "today",
+            "project phase 4",
+            "nice"
+        ],
+        "name": "place7 aug 9",
+        "degreeOfImportance": 11,
+        "keptItems": [
+            {
+                "createdDate": "2022-08-09",
+                "keywords": [
+                    "black",
+                    "mac",
+                    "ince",
+                    "nice",
+                    "typo",
+                    "nvm",
+                    "yea"
+                ],
+                "name": "mouse",
+                "degreeOfImportance": -777,
+                "importantDate": "7777-07-17"
+            },
+            {
+                "createdDate": "2022-08-09",
+                "keywords": [
+                    "white",
+                    "transparent",
+                    "can contain water",
+                    "whatever it can fit",
+                    "yea",
+                    "good "
+                ],
+                "name": "water bottle",
+                "degreeOfImportance": -777,
+                "keptItems": [
+                    {
+                        "createdDate": "2022-08-09",
+                        "keywords": ["smaller than bottle"],
+                        "name": "small box",
+                        "degreeOfImportance": -777,
+                        "keptItems": [],
+                        "importantDate": "7777-07-17"
+                    },
+                    {
+                        "createdDate": "2022-08-09",
+                        "keywords": [
+                            "yes",
+                            "if u have to...",
+                            "uh... "
+                        ],
+                        "name": "shit",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    }
+                ],
+                "importantDate": "7777-07-17"
+            },
+            {
+                "createdDate": "2022-08-09",
+                "keywords": [],
+                "name": "another place",
+                "degreeOfImportance": -777,
+                "keptItems": [
+                    {
+                        "createdDate": "2022-08-09",
+                        "keywords": ["small"],
+                        "name": "an item",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    },
+                    {
+                        "createdDate": "2022-08-09",
+                        "keywords": [],
+                        "name": "a place",
+                        "degreeOfImportance": -777,
+                        "keptItems": [],
+                        "importantDate": "7777-07-17"
+                    }
+                ],
+                "importantDate": "7777-07-17"
+            }
+        ],
+        "importantDate": "2022-08-09"
+    },
+    {
+        "createdDate": "2022-08-09",
+        "keywords": [
+            "test3",
+            "hope",
+            "it",
+            "will work"
+        ],
+        "name": "phase4",
+        "degreeOfImportance": -777,
+        "keptItems": [
+            {
+                "createdDate": "2022-08-09",
+                "keywords": [
+                    "lets  ",
+                    "add  some",
+                    "items? "
+                ],
+                "name": "memo",
+                "degreeOfImportance": -777,
+                "importantDate": "7777-07-17"
+            },
+            {
+                "createdDate": "2022-08-09",
+                "keywords": [
+                    "nice yellow",
+                    "pouch",
+                    "contains cables",
+                    "mac ",
+                    "apple",
+                    "chargers"
+                ],
+                "name": "yellow  pouch",
+                "degreeOfImportance": -777,
+                "keptItems": [{
+                    "createdDate": "2022-08-09",
+                    "keywords": ["apple"],
+                    "name": "charger",
+                    "degreeOfImportance": -777,
                     "importantDate": "7777-07-17"
-                }
-            ],
-            "importantDate": "7777-07-17"
-        }
-    ],
-    "importantDate": "2018-07-17"
-}]}
+                }],
+                "importantDate": "7777-07-17"
+            }
+        ],
+        "importantDate": "7777-07-17"
+    }
+]}
