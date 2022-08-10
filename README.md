@@ -178,7 +178,7 @@ As a user, I want to be able to
 - You can reload the state of my application by `Load File` button
 
 ---
-### Phase 4
+### Phase 4: Task 2
 
 **Sample:**
 ```
@@ -192,5 +192,10 @@ Deleted item-"create a place  to delete" from place-"place7 aug 9".
 Added item-"item1" to place-"place7 aug 9".
 Deleted item-"item1" from place-"place7 aug 9".
 ```
+
+---
+### Phase 4: Task 3
+
+I will use a composite pattern between `Place` and `Item`.
 
 ---
