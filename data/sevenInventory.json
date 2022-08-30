@@ -283,6 +283,13 @@
                 "name": "item3",
                 "degreeOfImportance": 7,
                 "importantDate": "2097-07-17"
+            },
+            {
+                "createdDate": "2022-08-16",
+                "keywords": [],
+                "name": "item3",
+                "degreeOfImportance": 9,
+                "importantDate": "2009-09-09"
             }
         ],
         "importantDate": "2017-07-17"
@@ -408,13 +415,23 @@
                 ],
                 "name": "yellow  pouch",
                 "degreeOfImportance": -777,
-                "keptItems": [{
-                    "createdDate": "2022-08-09",
-                    "keywords": ["apple"],
-                    "name": "charger",
-                    "degreeOfImportance": -777,
-                    "importantDate": "7777-07-17"
-                }],
+                "keptItems": [
+                    {
+                        "createdDate": "2022-08-09",
+                        "keywords": ["apple"],
+                        "name": "charger",
+                        "degreeOfImportance": -777,
+                        "importantDate": "7777-07-17"
+                    },
+                    {
+                        "createdDate": "2022-08-20",
+                        "keywords": [],
+                        "name": "place7",
+                        "degreeOfImportance": -777,
+                        "keptItems": [],
+                        "importantDate": "2009-09-09"
+                    }
+                ],
                 "importantDate": "7777-07-17"
             }
         ],

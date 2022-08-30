@@ -19,7 +19,6 @@
       - `keyWords` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      // related to the item for easy lookup
 
    3. `Place` &nbsp;&nbsp;&nbsp;
    // can keep items, and is also an item itself
@@ -95,18 +94,6 @@
 
 ---
 
-| filed             | type                     |
-|-------------------| ------------------------ |
-| name              | String                   |
-| createdDate       | LocalDate                |
-| importantDate     | LocalDate                |
-| degreeOfImportance| int                      |
-| keywords          | ArrayList\<String>       |
-|                   |                          |
-| keptItems         | ListOfObject             |
-|                   |                          |
-| listOfPlaces      | extends ArrayList\<Item> |
-
 [//]: # ()
 [//]: # (---)
 
@@ -135,17 +122,13 @@
 
 ### Who will use it?
 
-Everyone who is willing to put more 
-effort in **managing belongings**.
+Everyone who wants to manage belongings.
 
 ---
 
 ### Why is this project of interest to you?
 
-- Because it's FUN :)
-- Is also something that 
-I once thought about but didn't know how to realize.
-- Learning and implementing new concepts are fun per se.
+- It's fun :)
 
 ---
 
@@ -167,35 +150,53 @@ As a user, I want to be able to
 [//]: # (- _find an `item` by its name_)
 [//]: # (- _find an `item` by fuzzy search_)
 
----
+[//]: # ()
+[//]: # (### Instructions for Grader)
 
-### Instructions for Grader
+[//]: # ()
+[//]: # (- You can generate the first required event by clicking `Create a new Place` button)
 
-- You can generate the first required event by clicking `Create a new Place` button
-- You can generate the second required event by clicking  `Show  All Important Dates` button
-- You can locate my visual component at the start of the app
-- You can save the state of my application by clicking `Save File` button
-- You can reload the state of my application by `Load File` button
+[//]: # (- You can generate the second required event by clicking  `Show  All Important Dates` button)
 
----
-### Phase 4: Task 2
+[//]: # (- You can locate my visual component at the start of the app)
 
-**Sample:**
-```
-Event log cleared.
-Added item-"create a place  to delete" to place-"place7 aug 9".
-Added item-"item to  delete" to place-"create a place  to delete".
-Added item-"another place" to place-"create a place  to delete".
-Displayed timeline.
-Deleted item-"another place" from place-"create a place  to delete".
-Deleted item-"create a place  to delete" from place-"place7 aug 9".
-Added item-"item1" to place-"place7 aug 9".
-Deleted item-"item1" from place-"place7 aug 9".
-```
+[//]: # (- You can save the state of my application by clicking `Save File` button)
+
+[//]: # (- You can reload the state of my application by `Load File` button)
 
 ---
-### Phase 4: Task 3
 
-I will use a composite pattern between `Place` and `Item`.
+[//]: # (### Phase 4: Task 2)
 
----
+[//]: # ()
+[//]: # (**Sample:**)
+
+[//]: # (```)
+
+[//]: # (Event log cleared.)
+
+[//]: # (Added item-"create a place  to delete" to place-"place7 aug 9".)
+
+[//]: # (Added item-"item to  delete" to place-"create a place  to delete".)
+
+[//]: # (Added item-"another place" to place-"create a place  to delete".)
+
+[//]: # (Displayed timeline.)
+
+[//]: # (Deleted item-"another place" from place-"create a place  to delete".)
+
+[//]: # (Deleted item-"create a place  to delete" from place-"place7 aug 9".)
+
+[//]: # (Added item-"item1" to place-"place7 aug 9".)
+
+[//]: # (Deleted item-"item1" from place-"place7 aug 9".)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # (### Phase 4: Task 3)
+
+[//]: # ()
+[//]: # (I will use a composite pattern between `Place` and `Item`.)

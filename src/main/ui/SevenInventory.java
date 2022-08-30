@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-// SevenInventory application
+// SevenInventory application Console UI
 public class SevenInventory {
     // Next phase:
     // TODO: finish search method: look up items, using LevenshteinDistance
