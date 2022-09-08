@@ -8,8 +8,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import static java.lang.Math.max;
-
 // An item with necessary information
 public class Item implements Writable {
     private final String name;

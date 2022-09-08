@@ -9,7 +9,7 @@ import java.util.Comparator;
 
 // a place to keep items. A place can also be an item and can be kept at a place
 // e.g. a bag can be kept at a bigger bag
-public class Place extends Item implements Writable {
+public class Place extends Item {
     private final ListOfObjects keptItems; // items kept in this place
 
     // Constructors below ========================
