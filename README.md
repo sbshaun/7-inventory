@@ -1,6 +1,13 @@
 # Where The Hack- "7-Inventory"
 
 ---
+I'm very forgetful so I planned to build an inventory app to keep track of my stuff in Java as a personal project. 
+It has a class "Item" which contains information about the kept item, 
+and a class "Place" which extends "Item" and it has an extra attribute that it can contain a list of "Item". 
+So an "Item" can be kept at a "Place", and a "Place" can also be kept at another "Place" (maybe a bigger place in reality). 
+It turned out that I realized it's a very simplified folder system LOL.
+
+---
 
 ### What will the application do?
 
